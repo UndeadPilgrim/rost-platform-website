@@ -159,3 +159,28 @@ Stage Summary:
 - Page is now less dense: headline leads the hero, tagline "Strategic Design Advisor" + new supporting copy, 2 stats (59+ / 16+), only the global-presence ticker before the footer, generous spacing throughout.
 - Blue #007acc accent, EN/FA full translation, SEO, a11y, and sticky single-viewport layout all preserved.
 - Browser-verified end-to-end; lint clean.
+
+---
+Task ID: 11 (nav labels + CTA text update)
+Agent: main (Z.ai Code)
+Task: Update navbar to "about, service, departments, contact" and change the "START A PROJECT" button to "EXPERIENCE OUR ROLE".
+
+Work Log:
+- NAV array: [Platform/Service/Contact] → [About, Service, Departments, Contact].
+  - "About" → #platform (the sr-only brand narrative section; also the brand mark target).
+  - "Service" → #service — added `id="service"` to the hero <section> so the anchor resolves (previously #service had no target).
+  - "Departments" → #network (the global-presence ticker; the original #departments card grid was removed in Task 10, so this is the closest existing section anchor and departments relate to the branded-house presence).
+  - "Contact" → #contact (footer).
+- CTA button text: "Start a project" → "Experience our role" (CSS `text-transform: uppercase` already on the element, so it renders as "EXPERIENCE OUR ROLE").
+- No other content, styling, SEO, or a11y changes.
+
+Agent Browser verification:
+- Lint clean; no page/console errors.
+- Nav labels = [About, Service, Departments, Contact]; all 4 anchor targets (#platform, #service, #network, #contact) resolve to existing elements ✓.
+- CTA text = "Experience our role" with computed text-transform: uppercase → displays "EXPERIENCE OUR ROLE" ✓.
+- Nav clicks verified: "Contact" scrolls to footer, "Departments" scrolls to the network/ticker section ✓.
+
+Stage Summary:
+- Final artifact: src/app/page.tsx (NAV array + hero section id + CTA label).
+- Navbar is now About · Service · Departments · Contact; header CTA reads "EXPERIENCE OUR ROLE".
+- Browser-verified; lint clean.

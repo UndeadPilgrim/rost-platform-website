@@ -70,8 +70,9 @@ const STRINGS = {
 } as const;
 
 const NAV = [
-  { label: "Platform", href: "#platform" },
+  { label: "About", href: "#platform" },
   { label: "Service", href: "#service" },
+  { label: "Departments", href: "#network" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -490,7 +491,7 @@ export default function Home() {
             href="#contact"
             className="hidden items-center gap-1.5 rounded-full bg-rost-sand px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-rost-ink transition-all hover:bg-rost-accent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink sm:inline-flex"
           >
-            Start a project
+            Experience our role
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
           </a>
         </motion.div>
@@ -498,6 +499,7 @@ export default function Home() {
 
       {/* ============================ Hero (translated) ============================ */}
       <section
+        id="service"
         lang={contentLang}
         dir={rtl ? "rtl" : "ltr"}
         className="relative z-10 mx-auto flex w-full max-w-[1480px] flex-1 flex-col justify-center px-5 md:px-10"
