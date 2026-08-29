@@ -122,3 +122,40 @@ Stage Summary:
 - Accent color is now signature blue #007acc everywhere (palette, blueprint SVG, glows, rings, focus, brand assets).
 - فا button now fully translates all page content between header and footer to Persian with correct RTL direction and lang attributes; header and footer remain in English/LTR.
 - Browser-verified end-to-end; lint clean; sticky footer + responsiveness preserved.
+
+---
+Task ID: 10 (less-dense revision: copy, stats, remove boxes, spacing)
+Agent: main (Z.ai Code)
+Task: Remove "Network" from navbar; change tagline to "Strategic Design Advisor" with new hero copy; remove the kicker line; reduce the 3 stats to "59+ COUNTRIES OF EXPERIENCE" and "16+ YEARS OF PROJECT RECORD"; remove the three bottom boxes before the footer; space everything better.
+
+Work Log:
+- Navbar: removed "Network" (explicit request) and "Departments" (its #departments section was being removed, so it would have become a dead anchor). Nav is now Platform · Service · Contact.
+- Hero copy: tagline changed "Your vision would grow." → "Strategic Design Advisor"; supporting copy changed to "We help clients define direction, curate the right expertise, and align decisions from initial vision to final realization." Both translated to Persian (مشاور استراتژیک طرح / ما به کارفرمایان کمک می‌کنیم جهت‌گیری را تعریف کنند، تخصص درست را کیوریت کنند، و تصمیمات را از چشم‌انداز اولیه تا تحقق نهایی هم‌راستا کنند.).
+- Removed the kicker line "STRATEGIC DESIGN CONSULTANT · RIBA PLAN OF WORK" (and its pulse dot + fadeUp animation) — headline now starts cleanly at the top of the hero.
+- Stats: reduced from 3 (05 / 07 / 02) to 2 — "59+ Countries of experience" and "16+ Years of project record" (FA: کشور تجربه / سال سابقه پروژه). Stat numbers bumped from text-2xl/3xl → text-3xl/4xl for emphasis now that there are fewer.
+- Removed the entire 3-card grid (id="departments") — Departments card, RIBA Client Adviser credential card, and "Begin the journey" CTA card all removed. Removed now-unused STRINGS fields (kicker, stat3, dept*, riba*, cta*) and the unused `Plus` import and `fadeUp` variant for clean code.
+- Kept the global-presence ticker (the only remaining element before the footer). Removed its `mb-4` (nothing below it now), bumped `py-2` → `py-3`.
+- Spacing improvements for a less-dense feel: headline→tagline block margin `mt-6/md:mt-8` → `mt-10/md:mt-14`; tagline/copy inner gap `gap-3` → `gap-4`; text-stats outer gap `gap-6` → `gap-10/md:gap-14`; hero copy max-width `44ch` → `50ch` and text opacity bumped to /85; ticker section bottom padding `pb-5` → `pb-10/md:pb-14` for breathing room before the footer.
+- Updated the sr-only SEO narrative to reflect the new positioning ("Strategic Design Advisor", "define direction, curate the right expertise", "59+ countries", "16+ years").
+- Preserved: blue #007acc accent, full EN/FA toggle with RTL, JSON-LD/OG/sitemap SEO, accessibility (skip link, focus-visible rings, ARIA, semantic headings), sticky footer, single-viewport composition.
+
+Agent Browser verification (1440×900, 1440×1080, 390×844):
+- No page/console errors; lint clean (0 errors, 0 warnings).
+- Nav = [Platform, Service, Contact] ✓ (Network & Departments gone).
+- Headline unchanged: "A multidisciplinary platform for guiding development in Architecture & Construction." ✓.
+- Tagline = "Strategic Design Advisor" (FA: مشاور استراتژیک طرح) ✓.
+- Hero copy = new text in both EN and FA ✓.
+- Kicker line absent (no "STRATEGIC DESIGN CONSULTANT" / "RIBA PLAN OF WORK" on page) ✓.
+- Stats = exactly 2: "59+ Countries of experience" / "16+ Years of project record" (FA: 59+ کشور تجربه / 16+ سال سابقه پروژه) ✓.
+- 3 bottom boxes removed: 0 <article> elements; #departments gone ✓; ticker still present ✓.
+- EN↔FA toggle verified both directions; footer stays EN/LTR ✓.
+- Sticky footer: 0px overflow at 900 (true single-viewport), 0px gap at 1080 (perfect sticky) ✓.
+- Mobile 390×844: no horizontal overflow, h1 visible ✓.
+- VLM audit (EN): no kicker, tagline "Strategic Design Advisor" in blue italic, exactly 2 stats, 3 boxes removed, "spacious and well-balanced", no defects ✓.
+- VLM audit (FA): tagline مشاور استراتژیک طرح in blue italic, exactly 2 stats, 3 boxes removed, RTL correct, no defects ✓.
+
+Stage Summary:
+- Final artifacts: src/app/page.tsx (revised content + spacing + cleaned imports/strings).
+- Page is now less dense: headline leads the hero, tagline "Strategic Design Advisor" + new supporting copy, 2 stats (59+ / 16+), only the global-presence ticker before the footer, generous spacing throughout.
+- Blue #007acc accent, EN/FA full translation, SEO, a11y, and sticky single-viewport layout all preserved.
+- Browser-verified end-to-end; lint clean.

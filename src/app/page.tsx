@@ -11,7 +11,6 @@ import {
 } from "framer-motion";
 import {
   ArrowUpRight,
-  Plus,
   Mail,
   Globe2,
   Phone,
@@ -21,7 +20,7 @@ import {
 
 /* ----------------------------------------------------------------------------
    ROST PLATFORM — single viewport animated homepage
-   Architecture & Construction · Strategic Design Consultant (RIBA-aligned)
+   Architecture & Construction · Strategic Design Advisor (RIBA-aligned)
    Accent: signature blue #007acc. Full EN / فا translation (excl. header/footer).
 ---------------------------------------------------------------------------- */
 
@@ -32,29 +31,14 @@ type Locale = "EN" | "FA";
 const STRINGS = {
   EN: {
     dir: "ltr",
-    kicker: "Strategic Design Consultant · RIBA Plan of Work",
     headlinePlain: "A multidisciplinary platform for guiding development in",
     headlineAccent: ["Architecture", "&", "Construction."],
-    tagline: "Your vision would grow.",
+    tagline: "Strategic Design Advisor",
     heroCopy:
-      "We curate and steer the development journey — from first vision to final realization — for clients shaping the built environment.",
-    stat1: "Global offices & partners",
-    stat2: "RIBA project stages guided",
-    stat3: "Departments · Branded House",
+      "We help clients define direction, curate the right expertise, and align decisions from initial vision to final realization.",
+    stat1: "Countries of experience",
+    stat2: "Years of project record",
     globalPresence: "Global presence",
-    deptCardTitle: "Branded House · Departments",
-    dept1Name: "ROST LIGHTING",
-    dept1Tag: "Light, the narrative of architecture",
-    dept2Name: "ROST TRIP",
-    dept2Tag: "Travel & experience",
-    ribaTitle: "International foundation",
-    ribaName: "RIBA",
-    ribaAdviser: "Client Adviser",
-    ribaDesc:
-      "Royal Institute of British Architects · Plan of Work 2020 · Stages 0–7",
-    ribaFounder: "Founder Dr. Taha Fallah · RIBA Member",
-    ctaTitle: "Begin the journey",
-    ctaCopy: "Define, curate & realize your next built environment.",
     presence: [
       { city: "London", code: "UK" },
       { city: "Mashhad", code: "IRAN" },
@@ -66,29 +50,14 @@ const STRINGS = {
   },
   FA: {
     dir: "rtl",
-    kicker: "مشاور استراتژیک طرح · چارچوب RIBA",
     headlinePlain: "پلتفرمی چندرشته‌ای برای راهبری توسعه در",
     headlineAccent: ["معماری", "و", "ساخت‌وساز."],
-    tagline: "چشم‌انداز تو رشد خواهد کرد.",
+    tagline: "مشاور استراتژیک طرح",
     heroCopy:
-      "مسیر توسعه را — از چشم‌انداز اولیه تا تحقق نهایی — برای کارفرمایانی که شکل‌دهندهٔ محیط ساخته‌شده‌اند، کیوریت و راهبری می‌کنیم.",
-    stat1: "دفاتر و شرکای جهانی",
-    stat2: "مراحل پروژهٔ RIBA",
-    stat3: "دپارتمان‌ها · برند مادر",
+      "ما به کارفرمایان کمک می‌کنیم جهت‌گیری را تعریف کنند، تخصص درست را کیوریت کنند، و تصمیمات را از چشم‌انداز اولیه تا تحقق نهایی هم‌راستا کنند.",
+    stat1: "کشور تجربه",
+    stat2: "سال سابقه پروژه",
     globalPresence: "حضور جهانی",
-    deptCardTitle: "برند مادر · دپارتمان‌ها",
-    dept1Name: "ROST LIGHTING",
-    dept1Tag: "نور، روایتگر معماری",
-    dept2Name: "ROST TRIP",
-    dept2Tag: "سفر و تجربه",
-    ribaTitle: "بنیان بین‌المللی",
-    ribaName: "RIBA",
-    ribaAdviser: "مشاور کارفرما",
-    ribaDesc:
-      "مؤسسهٔ معماران سلطنتی بریتانیا · چارچوب ۲۰۲۰ · مراحل ۰ تا ۷",
-    ribaFounder: "بنیان‌گذار دکتر طه فلاح · عضو RIBA",
-    ctaTitle: "آغاز مسیر",
-    ctaCopy: "محیط ساخته‌شدهٔ بعدی خود را تعریف، کیوریت و محقق کنید.",
     presence: [
       { city: "لندن", code: "UK" },
       { city: "مشهد", code: "IRAN" },
@@ -103,8 +72,6 @@ const STRINGS = {
 const NAV = [
   { label: "Platform", href: "#platform" },
   { label: "Service", href: "#service" },
-  { label: "Departments", href: "#departments" },
-  { label: "Network", href: "#network" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -124,15 +91,6 @@ const wordRise: Variants = {
   show: {
     y: "0%",
     transition: { duration: 0.78, ease: EASE },
-  },
-};
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: EASE },
   },
 };
 
@@ -427,13 +385,14 @@ export default function Home() {
         <h2>About ROST PLATFORM</h2>
         <p>
           ROST PLATFORM is a multidisciplinary platform for guiding development
-          in Architecture &amp; Construction. We act as a curator and mentor for
-          project development — helping clients define and steer the path from
-          first vision to final realization. Our core service is the role of
-          Strategic Design Consultant, aligned with the RIBA Plan of Work 2020
-          and the international RIBA Client Adviser framework.
+          in Architecture &amp; Construction. We act as a Strategic Design
+          Advisor — a curator and mentor for project development — helping
+          clients define direction, curate the right expertise, and align
+          decisions from initial vision to final realization. Our core service
+          is aligned with the RIBA Plan of Work 2020 and the international RIBA
+          Client Adviser framework.
         </p>
-        <h2>Core service — Strategic Design Consultant</h2>
+        <h2>Core service — Strategic Design Advisor</h2>
         <p>
           For building projects, from initial vision through to post-construction,
           we operate at the strategic decision-making level to safeguard the
@@ -455,7 +414,8 @@ export default function Home() {
           ROST PLATFORM LTD is incorporated in the United Kingdom (Company
           Number 16445406) under the Companies Act 2006. We operate offices and
           partnerships across the United Kingdom, Iran, the United Arab
-          Emirates, China, and Brazil.
+          Emirates, China, and Brazil — with experience spanning 59+ countries
+          and 16+ years of project record.
         </p>
         <h2>Founder credentials</h2>
         <p>
@@ -543,22 +503,6 @@ export default function Home() {
         className="relative z-10 mx-auto flex w-full max-w-[1480px] flex-1 flex-col justify-center px-5 md:px-10"
         aria-labelledby="hero-heading"
       >
-        {/* kicker */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          transition={{ delay: 0.3, duration: 0.8, ease: EASE }}
-          className="mb-5 flex items-center gap-3 md:mb-6"
-        >
-          <span className="relative inline-flex h-2 w-2" aria-hidden>
-            <span className="rost-pulse-dot absolute inline-flex h-2 w-2 rounded-full bg-rost-accent" />
-          </span>
-          <span className="text-[11px] font-medium uppercase tracking-[0.42em] text-rost-sand-dim md:text-[12px]">
-            {t.kicker}
-          </span>
-        </motion.div>
-
         {/* headline */}
         <h1
           id="hero-heading"
@@ -592,47 +536,44 @@ export default function Home() {
           </motion.span>
         </h1>
 
-        {/* tagline + meta */}
+        {/* tagline + supporting copy + stats */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.6, duration: 0.9, ease: EASE }}
-          className="mt-6 flex flex-col gap-6 md:mt-8 md:flex-row md:items-end md:justify-between"
+          className="mt-10 flex flex-col gap-10 md:mt-14 md:flex-row md:items-end md:justify-between"
         >
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <p className="font-display text-xl italic text-rost-accent md:text-2xl">
               {t.tagline}
             </p>
-            <p className="max-w-[44ch] text-sm leading-relaxed text-rost-sand-dim/80 md:text-[15px]">
+            <p className="max-w-[50ch] text-sm leading-relaxed text-rost-sand-dim/85 md:text-[15px] md:leading-relaxed">
               {t.heroCopy}
             </p>
           </div>
 
-          {/* mini stat block */}
-          <dl className="flex items-stretch gap-6 md:gap-8" dir="ltr">
-            <Stat n="05" label={t.stat1} />
+          {/* stat block */}
+          <dl className="flex items-stretch gap-10 md:gap-14" dir="ltr">
+            <Stat n="59+" label={t.stat1} />
             <span className="w-px bg-rost-line-strong/50" aria-hidden />
-            <Stat n="07" label={t.stat2} />
-            <span className="w-px bg-rost-line-strong/50" aria-hidden />
-            <Stat n="02" label={t.stat3} />
+            <Stat n="16+" label={t.stat2} />
           </dl>
         </motion.div>
       </section>
 
-      {/* ============================ Bottom band (translated) ============================ */}
+      {/* ============================ Global presence ticker (translated) ============================ */}
       <section
         id="network"
         lang={contentLang}
         dir={rtl ? "rtl" : "ltr"}
-        className="relative z-10 mx-auto w-full max-w-[1480px] px-5 pb-5 md:px-10"
+        className="relative z-10 mx-auto w-full max-w-[1480px] px-5 pb-10 md:px-10 md:pb-14"
         aria-labelledby="network-heading"
       >
-        {/* global presence ticker */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.9, duration: 1 }}
-          className="mb-4 flex items-center gap-3 border-y border-rost-line-strong/40 py-2"
+          className="flex items-center gap-3 border-y border-rost-line-strong/40 py-3"
         >
           <span className="hidden shrink-0 items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-rost-sand-dim/70 md:flex">
             <Globe2 className="h-3.5 w-3.5 text-rost-accent" aria-hidden />
@@ -663,77 +604,6 @@ export default function Home() {
             <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-rost-ink to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-rost-ink to-transparent" />
           </div>
-        </motion.div>
-
-        {/* departments row */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.05, duration: 0.8, ease: EASE }}
-          id="departments"
-          className="grid grid-cols-1 gap-3 md:grid-cols-[1.1fr_1fr_1fr]"
-        >
-          {/* Departments */}
-          <article className="group relative overflow-hidden rounded-xl border border-rost-line-strong/40 bg-rost-ink-soft/40 p-4 backdrop-blur-sm transition-colors hover:border-rost-accent/40 focus-within:border-rost-accent/40">
-            <div className="flex items-center justify-between">
-              <h2 className="text-[10px] font-medium uppercase tracking-[0.3em] text-rost-sand-dim/70">
-                {t.deptCardTitle}
-              </h2>
-              <Plus className="h-4 w-4 text-rost-accent transition-transform duration-500 group-hover:rotate-90" aria-hidden />
-            </div>
-            <ul className="mt-3 space-y-2.5">
-              <li className="flex items-baseline gap-2">
-                <span className="font-display text-base font-medium text-rost-sand">
-                  {t.dept1Name}
-                </span>
-                <span className="text-[11px] italic text-rost-sand-dim/70">
-                  — {t.dept1Tag}
-                </span>
-              </li>
-              <li className="flex items-baseline gap-2">
-                <span className="font-display text-base font-medium text-rost-sand">
-                  {t.dept2Name}
-                </span>
-                <span className="text-[11px] italic text-rost-sand-dim/70">
-                  — {t.dept2Tag}
-                </span>
-              </li>
-            </ul>
-          </article>
-
-          {/* RIBA credential */}
-          <article className="relative overflow-hidden rounded-xl border border-rost-line-strong/40 bg-rost-ink-soft/40 p-4 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.3em] text-rost-sand-dim/70">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-rost-accent" aria-hidden />
-              {t.ribaTitle}
-            </div>
-            <p className="mt-3 font-display text-2xl font-medium leading-tight text-rost-sand">
-              {t.ribaName} <span className="italic text-rost-accent">{t.ribaAdviser}</span>
-            </p>
-            <p className="mt-1.5 text-[11px] leading-relaxed text-rost-sand-dim/70">
-              {t.ribaDesc}
-            </p>
-            <p className="mt-1.5 text-[10px] uppercase tracking-[0.22em] text-rost-sand-dim/50">
-              {t.ribaFounder}
-            </p>
-          </article>
-
-          {/* CTA */}
-          <a
-            href="#contact"
-            className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-rost-accent/30 bg-gradient-to-br from-rost-accent/15 to-transparent p-4 transition-all hover:border-rost-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink"
-            aria-label={t.ctaTitle}
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-rost-accent">
-                {t.ctaTitle}
-              </span>
-              <ArrowUpRight className="h-4 w-4 text-rost-accent transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden />
-            </div>
-            <p className="mt-3 font-display text-lg leading-snug text-rost-sand">
-              {t.ctaCopy}
-            </p>
-          </a>
         </motion.div>
       </section>
 
@@ -809,10 +679,10 @@ export default function Home() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div className="flex flex-col">
-      <dd className="font-display text-2xl font-semibold leading-none text-rost-sand md:text-3xl">
+      <dd className="font-display text-3xl font-semibold leading-none text-rost-sand md:text-4xl">
         {n}
       </dd>
-      <dt className="mt-1.5 max-w-[16ch] text-[10px] uppercase leading-tight tracking-[0.18em] text-rost-sand-dim/70">
+      <dt className="mt-2 max-w-[16ch] text-[10px] uppercase leading-tight tracking-[0.18em] text-rost-sand-dim/70">
         {label}
       </dt>
     </div>
