@@ -129,7 +129,7 @@
   button:focus-visible,
   [role="tab"]:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid oklch(0.72 0.13 55 / 0.7);
+    outline: 2px solid oklch(0.524 0.149 238 / 0.8);
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -137,7 +137,7 @@
 
 /* ============================================================
    ROST PLATFORM — Architectural Premium Theme
-   Warm ink + sand + terracotta. NO blue/indigo.
+   Ink + sand + signature blue (#007acc).
    ============================================================ */
 @theme {
   --color-rost-ink: oklch(0.165 0.012 65);
@@ -145,8 +145,8 @@
   --color-rost-stone: oklch(0.32 0.012 70);
   --color-rost-sand: oklch(0.92 0.018 80);
   --color-rost-sand-dim: oklch(0.78 0.02 80);
-  --color-rost-amber: oklch(0.72 0.13 55);
-  --color-rost-amber-deep: oklch(0.62 0.15 48);
+  --color-rost-accent: oklch(0.524 0.149 238);
+  --color-rost-accent-deep: oklch(0.42 0.165 238);
   --color-rost-line: oklch(0.78 0.02 80 / 0.12);
   --color-rost-line-strong: oklch(0.78 0.02 80 / 0.28);
 
@@ -188,8 +188,8 @@
 
 /* Blinking status dot */
 @keyframes rost-pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 oklch(0.72 0.13 55 / 0.6); }
-  50%      { opacity: 0.5; box-shadow: 0 0 0 6px oklch(0.72 0.13 55 / 0); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 oklch(0.524 0.149 238 / 0.6); }
+  50%      { opacity: 0.5; box-shadow: 0 0 0 6px oklch(0.524 0.149 238 / 0); }
 }
 .rost-pulse-dot { animation: rost-pulse-dot 2.6s ease-in-out infinite; }
 

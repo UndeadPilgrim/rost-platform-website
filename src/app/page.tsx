@@ -22,30 +22,83 @@ import {
 /* ----------------------------------------------------------------------------
    ROST PLATFORM — single viewport animated homepage
    Architecture & Construction · Strategic Design Consultant (RIBA-aligned)
+   Accent: signature blue #007acc. Full EN / فا translation (excl. header/footer).
 ---------------------------------------------------------------------------- */
 
-const HEADLINE_PLAIN = "A multidisciplinary platform for guiding development in";
-const HEADLINE_ACCENT = ["Architecture", "&", "Construction."];
+type Locale = "EN" | "FA";
 
-const PRESENCE = [
-  { city: "London", code: "UK", role: "HQ · ROST PLATFORM LTD", lat: "51°N" },
-  { city: "Mashhad", code: "IRAN", role: "Headquarter", lat: "36°N" },
-  { city: "Tehran", code: "IRAN", role: "Office", lat: "35°N" },
-  { city: "Dubai", code: "UAE", role: "Office", lat: "25°N" },
-  { city: "Shanghai", code: "CHINA", role: "Partner", lat: "31°N" },
-  { city: "São Paulo", code: "BRAZIL", role: "Partner", lat: "23°S" },
-];
+/* ----------------------------- i18n strings -------------------------------- */
 
-const DEPARTMENTS = [
-  {
-    name: "ROST LIGHTING",
-    tag: "Light, the narrative of architecture",
+const STRINGS = {
+  EN: {
+    dir: "ltr",
+    kicker: "Strategic Design Consultant · RIBA Plan of Work",
+    headlinePlain: "A multidisciplinary platform for guiding development in",
+    headlineAccent: ["Architecture", "&", "Construction."],
+    tagline: "Your vision would grow.",
+    heroCopy:
+      "We curate and steer the development journey — from first vision to final realization — for clients shaping the built environment.",
+    stat1: "Global offices & partners",
+    stat2: "RIBA project stages guided",
+    stat3: "Departments · Branded House",
+    globalPresence: "Global presence",
+    deptCardTitle: "Branded House · Departments",
+    dept1Name: "ROST LIGHTING",
+    dept1Tag: "Light, the narrative of architecture",
+    dept2Name: "ROST TRIP",
+    dept2Tag: "Travel & experience",
+    ribaTitle: "International foundation",
+    ribaName: "RIBA",
+    ribaAdviser: "Client Adviser",
+    ribaDesc:
+      "Royal Institute of British Architects · Plan of Work 2020 · Stages 0–7",
+    ribaFounder: "Founder Dr. Taha Fallah · RIBA Member",
+    ctaTitle: "Begin the journey",
+    ctaCopy: "Define, curate & realize your next built environment.",
+    presence: [
+      { city: "London", code: "UK" },
+      { city: "Mashhad", code: "IRAN" },
+      { city: "Tehran", code: "IRAN" },
+      { city: "Dubai", code: "UAE" },
+      { city: "Shanghai", code: "CHINA" },
+      { city: "São Paulo", code: "BRAZIL" },
+    ],
   },
-  {
-    name: "ROST TRIP",
-    tag: "Travel & experience",
+  FA: {
+    dir: "rtl",
+    kicker: "مشاور استراتژیک طرح · چارچوب RIBA",
+    headlinePlain: "پلتفرمی چندرشته‌ای برای راهبری توسعه در",
+    headlineAccent: ["معماری", "و", "ساخت‌وساز."],
+    tagline: "چشم‌انداز تو رشد خواهد کرد.",
+    heroCopy:
+      "مسیر توسعه را — از چشم‌انداز اولیه تا تحقق نهایی — برای کارفرمایانی که شکل‌دهندهٔ محیط ساخته‌شده‌اند، کیوریت و راهبری می‌کنیم.",
+    stat1: "دفاتر و شرکای جهانی",
+    stat2: "مراحل پروژهٔ RIBA",
+    stat3: "دپارتمان‌ها · برند مادر",
+    globalPresence: "حضور جهانی",
+    deptCardTitle: "برند مادر · دپارتمان‌ها",
+    dept1Name: "ROST LIGHTING",
+    dept1Tag: "نور، روایتگر معماری",
+    dept2Name: "ROST TRIP",
+    dept2Tag: "سفر و تجربه",
+    ribaTitle: "بنیان بین‌المللی",
+    ribaName: "RIBA",
+    ribaAdviser: "مشاور کارفرما",
+    ribaDesc:
+      "مؤسسهٔ معماران سلطنتی بریتانیا · چارچوب ۲۰۲۰ · مراحل ۰ تا ۷",
+    ribaFounder: "بنیان‌گذار دکتر طه فلاح · عضو RIBA",
+    ctaTitle: "آغاز مسیر",
+    ctaCopy: "محیط ساخته‌شدهٔ بعدی خود را تعریف، کیوریت و محقق کنید.",
+    presence: [
+      { city: "لندن", code: "UK" },
+      { city: "مشهد", code: "IRAN" },
+      { city: "تهران", code: "IRAN" },
+      { city: "دبی", code: "UAE" },
+      { city: "شانگهای", code: "CHINA" },
+      { city: "سائو پائولو", code: "BRAZIL" },
+    ],
   },
-];
+} as const;
 
 const NAV = [
   { label: "Platform", href: "#platform" },
@@ -92,7 +145,7 @@ function Word({ children, accent = false }: { children: string; accent?: boolean
         variants={wordRise}
         className={
           accent
-            ? "inline-block font-display italic text-rost-amber"
+            ? "inline-block font-display italic text-rost-accent"
             : "inline-block"
         }
       >
@@ -112,16 +165,16 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      {/* warm ink base */}
+      {/* ink base */}
       <div className="absolute inset-0 bg-rost-ink" />
 
-      {/* radial amber glow, breathing */}
+      {/* blue radial glow, breathing */}
       <motion.div
         style={{ x: txSlow, y: tySlow }}
         className="absolute inset-0"
       >
-        <div className="rost-breathe absolute -top-1/3 left-1/2 h-[80vh] w-[80vh] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_65%)] blur-2xl" />
-        <div className="rost-breathe-2 absolute bottom-[-20%] right-[-10%] h-[60vh] w-[60vh] rounded-full bg-[radial-gradient(circle,oklch(0.62_0.15_48/0.18),transparent_60%)] blur-2xl" />
+        <div className="rost-breathe absolute -top-1/3 left-1/2 h-[80vh] w-[80vh] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,oklch(0.524_0.149_238/0.22),transparent_65%)] blur-2xl" />
+        <div className="rost-breathe-2 absolute bottom-[-20%] right-[-10%] h-[60vh] w-[60vh] rounded-full bg-[radial-gradient(circle,oklch(0.42_0.165_238/0.18),transparent_60%)] blur-2xl" />
       </motion.div>
 
       {/* faint architectural grid */}
@@ -219,7 +272,7 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
           cx="720"
           cy="460"
           r="300"
-          stroke="oklch(0.72 0.13 55 / 0.16)"
+          stroke="oklch(0.524 0.149 238 / 0.16)"
           strokeWidth="1"
           fill="none"
           initial={{ pathLength: 0, opacity: 0 }}
@@ -259,7 +312,7 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
       </motion.svg>
 
       {/* vertical scan line */}
-      <div className="rost-scan absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-rost-amber/40 to-transparent" />
+      <div className="rost-scan absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-rost-accent/40 to-transparent" />
 
       {/* grain */}
       <div className="rost-grain absolute inset-0 opacity-[0.05] mix-blend-soft-light" />
@@ -276,7 +329,7 @@ function BrandMark() {
   return (
     <a
       href="#platform"
-      className="group flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-amber/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink"
+      className="group flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink"
       aria-label="ROST PLATFORM — home"
     >
       <span className="relative inline-flex h-9 w-9 items-center justify-center" aria-hidden>
@@ -296,7 +349,7 @@ function BrandMark() {
           {/* upward growth arrow / structure */}
           <motion.path
             d="M10 26 L18 10 L26 26"
-            stroke="oklch(0.72 0.13 55)"
+            stroke="oklch(0.524 0.149 238)"
             strokeWidth="1.6"
             fill="none"
             strokeLinecap="round"
@@ -307,7 +360,7 @@ function BrandMark() {
           />
           <motion.path
             d="M14 22 H22"
-            stroke="oklch(0.72 0.13 55)"
+            stroke="oklch(0.524 0.149 238)"
             strokeWidth="1.6"
             fill="none"
             strokeLinecap="round"
@@ -336,7 +389,9 @@ export default function Home() {
   const rootRef = useRef<HTMLElement>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const [locale, setLocale] = useState<"EN" | "FA">("EN");
+  const [locale, setLocale] = useState<Locale>("EN");
+  const t = STRINGS[locale];
+  const rtl = t.dir === "rtl";
 
   useEffect(() => {
     if (reduce) return;
@@ -352,8 +407,9 @@ export default function Home() {
     return () => window.removeEventListener("mousemove", onMove);
   }, [reduce, mx, my]);
 
-  const tagline =
-    locale === "EN" ? "Your vision would grow." : "چشم‌انداز تو رشد خواهد کرد.";
+  // Reflect the active content language on <main> for screen readers,
+  // so assistive tech pronounces the Persian text correctly.
+  const contentLang = locale === "EN" ? "en" : "fa";
 
   return (
     <main
@@ -421,7 +477,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* ============================ Header ============================ */}
+      {/* ============================ Header (always EN) ============================ */}
       <header className="relative z-20 mx-auto flex w-full max-w-[1480px] items-center justify-between px-5 py-4 md:px-10 md:py-5">
         <motion.div
           initial={{ opacity: 0, y: -8 }}
@@ -445,7 +501,7 @@ export default function Home() {
               className="group relative rounded-full px-4 py-2 text-[12px] font-medium uppercase tracking-[0.18em] text-rost-sand-dim transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand"
             >
               {n.label}
-              <span className="absolute inset-x-4 -bottom-px h-px origin-left scale-x-0 bg-rost-amber/60 transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute inset-x-4 -bottom-px h-px origin-left scale-x-0 bg-rost-accent/60 transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </motion.nav>
@@ -458,7 +514,7 @@ export default function Home() {
         >
           <button
             onClick={() => setLocale((l) => (l === "EN" ? "FA" : "EN"))}
-            className="flex items-center gap-1.5 rounded-full border border-rost-line-strong/60 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-rost-sand-dim transition-colors hover:border-rost-amber/60 hover:text-rost-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-amber/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink"
+            className="flex items-center gap-1.5 rounded-full border border-rost-line-strong/60 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-rost-sand-dim transition-colors hover:border-rost-accent/60 hover:text-rost-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink"
             aria-label="Toggle language between English and Persian"
             aria-pressed={locale === "FA"}
           >
@@ -472,7 +528,7 @@ export default function Home() {
           </button>
           <a
             href="#contact"
-            className="hidden items-center gap-1.5 rounded-full bg-rost-sand px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-rost-ink transition-all hover:bg-rost-amber hover:text-rost-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-amber/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink sm:inline-flex"
+            className="hidden items-center gap-1.5 rounded-full bg-rost-sand px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-rost-ink transition-all hover:bg-rost-accent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink sm:inline-flex"
           >
             Start a project
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
@@ -480,8 +536,10 @@ export default function Home() {
         </motion.div>
       </header>
 
-      {/* ============================ Hero ============================ */}
+      {/* ============================ Hero (translated) ============================ */}
       <section
+        lang={contentLang}
+        dir={rtl ? "rtl" : "ltr"}
         className="relative z-10 mx-auto flex w-full max-w-[1480px] flex-1 flex-col justify-center px-5 md:px-10"
         aria-labelledby="hero-heading"
       >
@@ -494,17 +552,17 @@ export default function Home() {
           className="mb-5 flex items-center gap-3 md:mb-6"
         >
           <span className="relative inline-flex h-2 w-2" aria-hidden>
-            <span className="rost-pulse-dot absolute inline-flex h-2 w-2 rounded-full bg-rost-amber" />
+            <span className="rost-pulse-dot absolute inline-flex h-2 w-2 rounded-full bg-rost-accent" />
           </span>
           <span className="text-[11px] font-medium uppercase tracking-[0.42em] text-rost-sand-dim md:text-[12px]">
-            Strategic Design Consultant · RIBA Plan of Work
+            {t.kicker}
           </span>
         </motion.div>
 
         {/* headline */}
         <h1
           id="hero-heading"
-          className="max-w-[18ch] text-balance font-sans text-[clamp(2rem,5.4vw,4.6rem)] font-medium leading-[1.04] tracking-[-0.02em] text-rost-sand"
+          className="max-w-[22ch] text-balance font-sans text-[clamp(2rem,5.4vw,4.6rem)] font-medium leading-[1.1] tracking-[-0.01em] text-rost-sand"
         >
           <motion.span
             variants={headlineWrap}
@@ -512,7 +570,7 @@ export default function Home() {
             animate="show"
             className="inline"
           >
-            {HEADLINE_PLAIN.split(" ").map((w, i) => (
+            {t.headlinePlain.split(" ").map((w, i) => (
               <Word key={`p-${i}`}>
                 {w}&nbsp;
               </Word>
@@ -526,7 +584,7 @@ export default function Home() {
             className="inline"
             style={{ transitionDelay: "0.4s" }}
           >
-            {HEADLINE_ACCENT.map((w, i) => (
+            {t.headlineAccent.map((w, i) => (
               <Word key={`a-${i}`} accent>
                 {w}&nbsp;
               </Word>
@@ -542,32 +600,30 @@ export default function Home() {
           className="mt-6 flex flex-col gap-6 md:mt-8 md:flex-row md:items-end md:justify-between"
         >
           <div className="flex flex-col gap-3">
-            <p
-              className="font-display text-xl italic text-rost-amber md:text-2xl"
-              dir={locale === "FA" ? "rtl" : "ltr"}
-            >
-              {tagline}
+            <p className="font-display text-xl italic text-rost-accent md:text-2xl">
+              {t.tagline}
             </p>
             <p className="max-w-[44ch] text-sm leading-relaxed text-rost-sand-dim/80 md:text-[15px]">
-              We curate and steer the development journey — from first vision to
-              final realization — for clients shaping the built environment.
+              {t.heroCopy}
             </p>
           </div>
 
           {/* mini stat block */}
-          <dl className="flex items-stretch gap-6 md:gap-8">
-            <Stat n="05" label="Global offices & partners" />
+          <dl className="flex items-stretch gap-6 md:gap-8" dir="ltr">
+            <Stat n="05" label={t.stat1} />
             <span className="w-px bg-rost-line-strong/50" aria-hidden />
-            <Stat n="07" label="RIBA project stages guided" />
+            <Stat n="07" label={t.stat2} />
             <span className="w-px bg-rost-line-strong/50" aria-hidden />
-            <Stat n="02" label="Departments · Branded House" />
+            <Stat n="02" label={t.stat3} />
           </dl>
         </motion.div>
       </section>
 
-      {/* ============================ Bottom band ============================ */}
+      {/* ============================ Bottom band (translated) ============================ */}
       <section
         id="network"
+        lang={contentLang}
+        dir={rtl ? "rtl" : "ltr"}
         className="relative z-10 mx-auto w-full max-w-[1480px] px-5 pb-5 md:px-10"
         aria-labelledby="network-heading"
       >
@@ -579,19 +635,25 @@ export default function Home() {
           className="mb-4 flex items-center gap-3 border-y border-rost-line-strong/40 py-2"
         >
           <span className="hidden shrink-0 items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-rost-sand-dim/70 md:flex">
-            <Globe2 className="h-3.5 w-3.5 text-rost-amber" aria-hidden />
-            <span id="network-heading" className="sr-only">Global presence</span>
-            Global presence
+            <Globe2 className="h-3.5 w-3.5 text-rost-accent" aria-hidden />
+            <span id="network-heading" className="sr-only">{t.globalPresence}</span>
+            {t.globalPresence}
           </span>
           <div className="relative flex-1 overflow-hidden" aria-hidden>
-            <div className="rost-marquee flex w-max gap-8 whitespace-nowrap">
-              {[...PRESENCE, ...PRESENCE].map((p, i) => (
+            <div className="rost-marquee flex w-max gap-8 whitespace-nowrap" dir="ltr">
+              {[...t.presence, ...t.presence].map((p, i) => (
                 <span
                   key={i}
                   className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-rost-sand-dim"
                 >
-                  <span className="text-rost-sand">{p.city}</span>
-                  <span className="text-rost-amber/70">·</span>
+                  <span
+                    className="text-rost-sand"
+                    dir={rtl ? "rtl" : "ltr"}
+                    lang={contentLang}
+                  >
+                    {p.city}
+                  </span>
+                  <span className="text-rost-accent/70">·</span>
                   <span className="text-rost-sand-dim/60">{p.code}</span>
                   <span className="text-rost-line-strong">|</span>
                 </span>
@@ -612,64 +674,70 @@ export default function Home() {
           className="grid grid-cols-1 gap-3 md:grid-cols-[1.1fr_1fr_1fr]"
         >
           {/* Departments */}
-          <article className="group relative overflow-hidden rounded-xl border border-rost-line-strong/40 bg-rost-ink-soft/40 p-4 backdrop-blur-sm transition-colors hover:border-rost-amber/40 focus-within:border-rost-amber/40">
+          <article className="group relative overflow-hidden rounded-xl border border-rost-line-strong/40 bg-rost-ink-soft/40 p-4 backdrop-blur-sm transition-colors hover:border-rost-accent/40 focus-within:border-rost-accent/40">
             <div className="flex items-center justify-between">
               <h2 className="text-[10px] font-medium uppercase tracking-[0.3em] text-rost-sand-dim/70">
-                Branded House · Departments
+                {t.deptCardTitle}
               </h2>
-              <Plus className="h-4 w-4 text-rost-amber transition-transform duration-500 group-hover:rotate-90" aria-hidden />
+              <Plus className="h-4 w-4 text-rost-accent transition-transform duration-500 group-hover:rotate-90" aria-hidden />
             </div>
             <ul className="mt-3 space-y-2.5">
-              {DEPARTMENTS.map((d) => (
-                <li key={d.name} className="flex items-baseline gap-2">
-                  <span className="font-display text-base font-medium text-rost-sand">
-                    {d.name}
-                  </span>
-                  <span className="text-[11px] italic text-rost-sand-dim/70">
-                    — {d.tag}
-                  </span>
-                </li>
-              ))}
+              <li className="flex items-baseline gap-2">
+                <span className="font-display text-base font-medium text-rost-sand">
+                  {t.dept1Name}
+                </span>
+                <span className="text-[11px] italic text-rost-sand-dim/70">
+                  — {t.dept1Tag}
+                </span>
+              </li>
+              <li className="flex items-baseline gap-2">
+                <span className="font-display text-base font-medium text-rost-sand">
+                  {t.dept2Name}
+                </span>
+                <span className="text-[11px] italic text-rost-sand-dim/70">
+                  — {t.dept2Tag}
+                </span>
+              </li>
             </ul>
           </article>
 
           {/* RIBA credential */}
           <article className="relative overflow-hidden rounded-xl border border-rost-line-strong/40 bg-rost-ink-soft/40 p-4 backdrop-blur-sm">
             <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.3em] text-rost-sand-dim/70">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-rost-amber" aria-hidden />
-              International foundation
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-rost-accent" aria-hidden />
+              {t.ribaTitle}
             </div>
             <p className="mt-3 font-display text-2xl font-medium leading-tight text-rost-sand">
-              RIBA <span className="italic text-rost-amber">Client Adviser</span>
+              {t.ribaName} <span className="italic text-rost-accent">{t.ribaAdviser}</span>
             </p>
             <p className="mt-1.5 text-[11px] leading-relaxed text-rost-sand-dim/70">
-              Royal Institute of British Architects · Plan of Work 2020 · Stages 0–7
+              {t.ribaDesc}
             </p>
             <p className="mt-1.5 text-[10px] uppercase tracking-[0.22em] text-rost-sand-dim/50">
-              Founder Dr. Taha Fallah · RIBA Member
+              {t.ribaFounder}
             </p>
           </article>
 
           {/* CTA */}
           <a
             href="#contact"
-            className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-rost-amber/30 bg-gradient-to-br from-rost-amber/15 to-transparent p-4 transition-all hover:border-rost-amber/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-amber/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink"
-            aria-label="Begin your project journey — contact ROST PLATFORM"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-rost-accent/30 bg-gradient-to-br from-rost-accent/15 to-transparent p-4 transition-all hover:border-rost-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink"
+            aria-label={t.ctaTitle}
           >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-rost-amber">
-                Begin the journey
+              <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-rost-accent">
+                {t.ctaTitle}
               </span>
-              <ArrowUpRight className="h-4 w-4 text-rost-amber transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden />
+              <ArrowUpRight className="h-4 w-4 text-rost-accent transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden />
             </div>
             <p className="mt-3 font-display text-lg leading-snug text-rost-sand">
-              Define, curate &amp; realize your next built environment.
+              {t.ctaCopy}
             </p>
           </a>
         </motion.div>
       </section>
 
-      {/* ============================ Footer (sticky) ============================ */}
+      {/* ============================ Footer (always EN, sticky) ============================ */}
       <footer
         id="contact"
         className="relative z-20 mt-auto border-t border-rost-line-strong/40 bg-rost-ink/70 backdrop-blur-md"
@@ -679,7 +747,7 @@ export default function Home() {
           Contact ROST PLATFORM
         </h2>
         <div className="mx-auto flex w-full max-w-[1480px] flex-col gap-3 px-5 py-3 md:flex-row md:items-center md:justify-between md:px-10">
-          <address className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] not-italic text-rost-sand-dim/80">
+          <address className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] not-italic text-rost-sand-dim/80" dir="ltr">
             <span className="font-display font-medium tracking-[0.18em] text-rost-sand">
               ROST PLATFORM LTD
             </span>
@@ -690,7 +758,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand focus-visible:underline"
             >
-              <Globe2 className="h-3 w-3 text-rost-amber/70" aria-hidden />
+              <Globe2 className="h-3 w-3 text-rost-accent/70" aria-hidden />
               www.rostplatform.com
             </a>
             <span className="hidden text-rost-line-strong md:inline" aria-hidden>|</span>
@@ -698,7 +766,7 @@ export default function Home() {
               href="mailto:info@rostplatform.com"
               className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand focus-visible:underline"
             >
-              <Mail className="h-3 w-3 text-rost-amber/70" aria-hidden />
+              <Mail className="h-3 w-3 text-rost-accent/70" aria-hidden />
               info@rostplatform.com
             </a>
             <span className="hidden text-rost-line-strong md:inline" aria-hidden>|</span>
@@ -706,11 +774,11 @@ export default function Home() {
               href="tel:+447386296171"
               className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand focus-visible:underline"
             >
-              <Phone className="h-3 w-3 text-rost-amber/70" aria-hidden />
+              <Phone className="h-3 w-3 text-rost-accent/70" aria-hidden />
               +44 73 86 296 171
             </a>
           </address>
-          <div className="flex items-center gap-4 text-[11px] text-rost-sand-dim/70">
+          <div className="flex items-center gap-4 text-[11px] text-rost-sand-dim/70" dir="ltr">
             <span className="hidden md:inline">© 2026 ROST PLATFORM LTD · Company No. 16445406</span>
             <a
               href="https://instagram.com/rostplatform"
@@ -719,12 +787,12 @@ export default function Home() {
               className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand focus-visible:underline"
               aria-label="ROST PLATFORM on Instagram — @rostplatform"
             >
-              <Instagram className="h-3.5 w-3.5 text-rost-amber/70" aria-hidden />
+              <Instagram className="h-3.5 w-3.5 text-rost-accent/70" aria-hidden />
               @rostplatform
             </a>
             <a
               href="#platform"
-              className="inline-flex items-center gap-1.5 rounded-full border border-rost-line-strong/50 px-3 py-1 transition-colors hover:border-rost-amber/50 hover:text-rost-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-amber/70"
+              className="inline-flex items-center gap-1.5 rounded-full border border-rost-line-strong/50 px-3 py-1 transition-colors hover:border-rost-accent/50 hover:text-rost-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70"
             >
               Back to top
               <ArrowDown className="h-3 w-3 rotate-180" aria-hidden />
@@ -744,7 +812,7 @@ function Stat({ n, label }: { n: string; label: string }) {
       <dd className="font-display text-2xl font-semibold leading-none text-rost-sand md:text-3xl">
         {n}
       </dd>
-      <dt className="mt-1.5 max-w-[14ch] text-[10px] uppercase leading-tight tracking-[0.2em] text-rost-sand-dim/70">
+      <dt className="mt-1.5 max-w-[16ch] text-[10px] uppercase leading-tight tracking-[0.18em] text-rost-sand-dim/70">
         {label}
       </dt>
     </div>

@@ -92,3 +92,33 @@ Stage Summary:
 - Final artifacts: src/app/layout.tsx, src/app/page.tsx, src/app/globals.css, public/sitemap.xml, public/robots.txt, public/og.png, public/favicon.png.
 - Site now has production-grade SEO (structured data, canonical, OG/Twitter cards with branded image, sitemap, robots, semantic headings, NAP) and accessibility (skip link, focus-visible rings, ARIA, lang/dir) while preserving the single-viewport animated hero.
 - Browser-verified end-to-end; lint clean.
+
+---
+Task ID: 9 (color change to blue + full FA translation)
+Agent: main (Z.ai Code)
+Task: Change the orange/amber accent color to blue #007acc, and add full functioning to the فا button by actually translating all page content (except header and footer) to Persian.
+
+Work Log:
+- Color system (globals.css): renamed `--color-rost-amber` → `--color-rost-accent` and `--color-rost-amber-deep` → `--color-rost-accent-deep`; set values to blue OKLCH approximations of #007acc (oklch(0.524 0.149 238) and oklch(0.42 0.165 238)). Updated focus-visible ring, pulse-dot keyframes, and theme comment to blue.
+- Color system (page.tsx): replaced every `rost-amber` class → `rost-accent`; replaced every inline amber OKLCH value (oklch(0.72 0.13 55...) / oklch(0.62 0.15 48...)) with blue OKLCH (oklch(0.524 0.149 238...) / oklch(0.42 0.165 238...)) across the SVG blueprint (portal circle stroke, brand-mark arrow, radial glows, scan line, all borders/hovers/rings).
+- Brand assets: regenerated /public/og.png (1344×768) and /public/favicon.png (1024×1024) via z-ai image CLI with vivid medium blue (#007acc) replacing the previous amber.
+- Full Persian i18n (page.tsx): introduced a `STRINGS` dictionary with `EN` and `FA` maps covering kicker, headline (plain + accent split for the word-by-word mask animation), tagline, hero copy, 3 stat labels, "Global presence" label, departments card title + both department names/tags, RIBA card (title / adviser / description / founder line), CTA card (title + copy), and the 6 network-ticker city names (Mashhad→مشهد, Tehran→تهران, Dubai→دبی, Shanghai→شانگهای, São Paulo→سائو پائولو, London→لندن); ISO-style country codes kept identical.
+- Locale wiring: the EN/FA toggle now swaps ALL content between header and footer. Hero <section> and network <section> receive `lang` (en/fa) and `dir` (ltr/rtl) attributes so Persian renders correctly RTL and screen readers pronounce it properly. Header (brand, nav, "Start a project") and footer (contact info, copyright, social, back-to-top) are explicitly forced `dir="ltr"` and left in English, per the user's instruction. Stat block forced `dir="ltr"` (numbers read left-to-right); ticker forced `dir="ltr"` with per-city `dir`/`lang` on the city name span. Headline `max-w` widened to 22ch and tracking/leading tuned for Persian ligatures.
+- Preserved: all prior SEO/a11y work (JSON-LD, canonical, OG/Twitter, sitemap, robots, skip link, focus-visible rings, semantic headings, sr-only narrative, tel:/mailto:).
+
+Agent Browser verification (1440×900, 1440×1080, 390×844):
+- No page/console errors; lint clean (0 errors, 0 warnings).
+- EN: headline "A multidisciplinary platform for guiding development in Architecture & Construction." ✓; accent computed color = blue lab(44.5 -13.7 -45.1) ≈ #007acc ✓.
+- FA: full translation verified — headline "پلتفرمی چندرشته‌ای برای راهبری توسعه در معماری و ساخت‌وساز.", kicker "مشاور استراتژیک طرح · چارچوب RIBA", tagline "چشم‌انداز تو رشد خواهد کرد.", hero copy, all 3 stat labels (دفاتر و شرکای جهانی / مراحل پروژهٔ RIBA / دپارتمان‌ها · برند مادر), global-presence label, ticker cities (لندن, مشهد, تهران, دبی, شانگهای, سائو پائولو), departments card (برند مادر · دپارتمان‌ها + نور، روایتگر معماری + سفر و تجربه), RIBA card (بنیان بین‌المللی / RIBA مشاور کارفرما / مؤسسهٔ معماران سلطنتی بریتانیا · چارچوب ۲۰۲۰ · مراحل ۰ تا ۷ / بنیان‌گذار دکتر طه فلاح · عضو RIBA), CTA card (آغاز مسیر / محیط ساخته‌شدهٔ بعدی خود را تعریف، کیوریت و محقق کنید.) ✓.
+- Hero & network sections: dir="rtl" + lang="fa" when FA; dir="ltr" + lang="en" when EN ✓. Toggle EN↔FA verified both directions.
+- Header & footer: stay dir=ltr / English in both locales ✓ (footer text "ROST PLATFORM LTD | www.rostplatform.com | info@rostplatform.com | +44 73 86 296 171 | © 2026 ROST PLATFORM LTD · Company No. 16445406").
+- Sticky footer: 0px overflow at 900 (true single-viewport), 0px gap at 1080 (perfect sticky), no overlap ✓.
+- Mobile 390×844: no horizontal overflow in EN or FA; h1 visible ✓.
+- VLM visual audit (EN desktop): accent is blue (not orange/amber), headline visible with "Architecture & Construction" in blue italic, premium clean layout, no defects ✓.
+- VLM visual audit (FA desktop): headline in Persian script, accent blue, RTL layout correct, no defects / no overlap ✓.
+
+Stage Summary:
+- Final artifacts: src/app/globals.css (blue tokens + keyframes), src/app/page.tsx (blue accent + full EN/FA i18n with RTL), public/og.png + public/favicon.png (regenerated in blue).
+- Accent color is now signature blue #007acc everywhere (palette, blueprint SVG, glows, rings, focus, brand assets).
+- فا button now fully translates all page content between header and footer to Persian with correct RTL direction and lang attributes; header and footer remain in English/LTR.
+- Browser-verified end-to-end; lint clean; sticky footer + responsiveness preserved.
