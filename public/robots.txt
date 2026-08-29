@@ -1,7 +1,13 @@
+# ROST PLATFORM — robots.txt
+# Allow all major crawlers full access.
+
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
 Allow: /
 
 User-agent: Twitterbot
@@ -10,5 +16,14 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://www.rostplatform.com/sitemap.xml
