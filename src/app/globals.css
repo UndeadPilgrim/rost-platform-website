@@ -45,71 +45,45 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --background: #171717;
+  --foreground: #ffffff;
+  --card: #171717;
+  --card-foreground: #ffffff;
+  --popover: #171717;
+  --popover-foreground: #ffffff;
+  --primary: #1c80bb;
+  --primary-foreground: #ffffff;
+  --secondary: #767676;
+  --secondary-foreground: #ffffff;
+  --muted: #232323;
+  --muted-foreground: #767676;
+  --accent: #1c80bb;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: rgba(118, 118, 118, 0.2);
+  --input: rgba(118, 118, 118, 0.25);
+  --ring: #1c80bb;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #171717;
+  --foreground: #ffffff;
+  --card: #171717;
+  --card-foreground: #ffffff;
+  --popover: #171717;
+  --popover-foreground: #ffffff;
+  --primary: #1c80bb;
+  --primary-foreground: #ffffff;
+  --secondary: #767676;
+  --secondary-foreground: #ffffff;
+  --muted: #232323;
+  --muted-foreground: #767676;
+  --accent: #1c80bb;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: rgba(118, 118, 118, 0.2);
+  --input: rgba(118, 118, 118, 0.25);
+  --ring: #1c80bb;
 }
 
 @layer base {
@@ -120,8 +94,7 @@
     @apply bg-background text-foreground;
   }
 
-  /* Visible keyboard focus ring for all interactive elements.
-     Applies only on keyboard nav (focus-visible), never on mouse click. */
+  /* Visible keyboard focus ring for all interactive elements. */
   :focus-visible {
     outline: none;
   }
@@ -129,26 +102,33 @@
   button:focus-visible,
   [role="tab"]:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid oklch(0.524 0.149 238 / 0.8);
+    outline: 2px solid rgba(28, 128, 187, 0.85);
     outline-offset: 2px;
     border-radius: 4px;
   }
 }
 
 /* ============================================================
-   ROST PLATFORM — Architectural Premium Theme
-   Ink + sand + signature blue (#007acc).
+   ROST PLATFORM — Canonical Brand Color System
+   - ROST BLUE:  #1C80BB (Primary Accent)
+   - ROST WHITE: #FFFFFF (Primary Contrast & Foreground)
+   - ROST BLACK: #171717 (Deep Background Base)
+   - ROST GRAY:  #767676 (Secondary Neutral)
    ============================================================ */
 @theme {
-  --color-rost-ink: oklch(0.165 0.012 65);
-  --color-rost-ink-soft: oklch(0.2 0.012 65);
-  --color-rost-stone: oklch(0.32 0.012 70);
-  --color-rost-sand: oklch(0.92 0.018 80);
-  --color-rost-sand-dim: oklch(0.78 0.02 80);
-  --color-rost-accent: oklch(0.524 0.149 238);
-  --color-rost-accent-deep: oklch(0.42 0.165 238);
-  --color-rost-line: oklch(0.78 0.02 80 / 0.12);
-  --color-rost-line-strong: oklch(0.78 0.02 80 / 0.28);
+  --color-rost-blue: #1C80BB;
+  --color-rost-white: #FFFFFF;
+  --color-rost-black: #171717;
+  --color-rost-gray: #767676;
+
+  /* Semantic Theme Aliases */
+  --color-rost-ink: #171717;
+  --color-rost-sand: #FFFFFF;
+  --color-rost-sand-dim: #767676;
+  --color-rost-accent: #1C80BB;
+  --color-rost-accent-deep: #156594;
+  --color-rost-line: rgba(118, 118, 118, 0.18);
+  --color-rost-line-strong: rgba(118, 118, 118, 0.35);
 
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
 }
@@ -157,7 +137,7 @@
 .rost-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
 .rost-scroll::-webkit-scrollbar-track { background: transparent; }
 .rost-scroll::-webkit-scrollbar-thumb {
-  background: oklch(0.78 0.02 80 / 0.2);
+  background: rgba(118, 118, 118, 0.25);
   border-radius: 999px;
 }
 
@@ -188,8 +168,8 @@
 
 /* Blinking status dot */
 @keyframes rost-pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 oklch(0.524 0.149 238 / 0.6); }
-  50%      { opacity: 0.5; box-shadow: 0 0 0 6px oklch(0.524 0.149 238 / 0); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(28, 128, 187, 0.6); }
+  50%      { opacity: 0.5; box-shadow: 0 0 0 6px rgba(28, 128, 187, 0); }
 }
 .rost-pulse-dot { animation: rost-pulse-dot 2.6s ease-in-out infinite; }
 
@@ -210,4 +190,3 @@
 
 /* Utility text balance */
 .text-balance { text-wrap: balance; }
-

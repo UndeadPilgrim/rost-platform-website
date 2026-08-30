@@ -203,7 +203,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.png", type: "image/png", sizes: "1024x1024" },
-      { url: "/favicon.ico", sizes: "any" },
     ],
     apple: [{ url: "/favicon.png", sizes: "1024x1024" }],
   },
@@ -238,7 +237,7 @@ export const metadata: Metadata = {
     site: "@rostplatform",
   },
   other: {
-    "theme-color": "#1a1714",
+    "theme-color": "#171717",
     "application-name": "ROST PLATFORM",
   },
 };
@@ -246,7 +245,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1a1714",
+  themeColor: "#171717",
   colorScheme: "dark",
 };
 

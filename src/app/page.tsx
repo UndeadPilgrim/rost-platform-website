@@ -21,7 +21,11 @@ import {
 /* ----------------------------------------------------------------------------
    ROST PLATFORM — single viewport animated homepage
    Architecture & Construction · Strategic Design Advisor (RIBA-aligned)
-   Accent: signature blue #007acc. Full EN / فا translation (excl. header/footer).
+   Canonical Brand Palette:
+   - ROST BLUE:  #1C80BB (Primary Accent)
+   - ROST WHITE: #FFFFFF (Primary Contrast & Foreground)
+   - ROST BLACK: #171717 (Deep Background Base)
+   - ROST GRAY:  #767676 (Secondary Neutral)
 ---------------------------------------------------------------------------- */
 
 type Locale = "EN" | "FA";
@@ -104,7 +108,7 @@ function Word({ children, accent = false }: { children: string; accent?: boolean
         variants={wordRise}
         className={
           accent
-            ? "inline-block font-display italic text-rost-accent"
+            ? "inline-block font-display italic text-rost-blue"
             : "inline-block"
         }
       >
@@ -124,16 +128,16 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      {/* ink base */}
-      <div className="absolute inset-0 bg-rost-ink" />
+      {/* black base */}
+      <div className="absolute inset-0 bg-rost-black" />
 
       {/* blue radial glow, breathing */}
       <motion.div
         style={{ x: txSlow, y: tySlow }}
         className="absolute inset-0"
       >
-        <div className="rost-breathe absolute -top-1/3 left-1/2 h-[80vh] w-[80vh] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,oklch(0.524_0.149_238/0.22),transparent_65%)] blur-2xl" />
-        <div className="rost-breathe-2 absolute bottom-[-20%] right-[-10%] h-[60vh] w-[60vh] rounded-full bg-[radial-gradient(circle,oklch(0.42_0.165_238/0.18),transparent_60%)] blur-2xl" />
+        <div className="rost-breathe absolute -top-1/3 left-1/2 h-[80vh] w-[80vh] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(28,128,187,0.22),transparent_65%)] blur-2xl" />
+        <div className="rost-breathe-2 absolute bottom-[-20%] right-[-10%] h-[60vh] w-[60vh] rounded-full bg-[radial-gradient(circle,rgba(21,101,148,0.18),transparent_60%)] blur-2xl" />
       </motion.div>
 
       {/* faint architectural grid */}
@@ -141,7 +145,7 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
         className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, oklch(0.92 0.018 80) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.92 0.018 80) 1px, transparent 1px)",
+            "linear-gradient(to right, #767676 1px, transparent 1px), linear-gradient(to bottom, #767676 1px, transparent 1px)",
           backgroundSize: "88px 88px",
         }}
       />
@@ -155,9 +159,9 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
       >
         <defs>
           <linearGradient id="rost-line" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="oklch(0.78 0.02 80)" stopOpacity="0.02" />
-            <stop offset="50%" stopColor="oklch(0.78 0.02 80)" stopOpacity="0.32" />
-            <stop offset="100%" stopColor="oklch(0.78 0.02 80)" stopOpacity="0.02" />
+            <stop offset="0%" stopColor="#767676" stopOpacity="0.02" />
+            <stop offset="50%" stopColor="#767676" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="#767676" stopOpacity="0.02" />
           </linearGradient>
         </defs>
 
@@ -182,7 +186,7 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
 
         {/* abstract structure: tower silhouette */}
         <motion.g
-          stroke="oklch(0.78 0.02 80 / 0.22)"
+          stroke="rgba(118, 118, 118, 0.24)"
           strokeWidth="1"
           fill="none"
           initial={{ opacity: 0 }}
@@ -205,7 +209,7 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
 
         {/* second structure */}
         <motion.g
-          stroke="oklch(0.78 0.02 80 / 0.16)"
+          stroke="rgba(118, 118, 118, 0.18)"
           strokeWidth="1"
           fill="none"
           initial={{ opacity: 0 }}
@@ -231,7 +235,7 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
           cx="720"
           cy="460"
           r="300"
-          stroke="oklch(0.524 0.149 238 / 0.16)"
+          stroke="rgba(28, 128, 187, 0.22)"
           strokeWidth="1"
           fill="none"
           initial={{ pathLength: 0, opacity: 0 }}
@@ -242,7 +246,7 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
           cx="720"
           cy="460"
           r="180"
-          stroke="oklch(0.78 0.02 80 / 0.1)"
+          stroke="rgba(118, 118, 118, 0.14)"
           strokeWidth="1"
           fill="none"
           initial={{ pathLength: 0, opacity: 0 }}
@@ -252,7 +256,7 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
 
         {/* dimension ticks on horizon */}
         <motion.g
-          stroke="oklch(0.78 0.02 80 / 0.32)"
+          stroke="rgba(118, 118, 118, 0.35)"
           strokeWidth="1"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -271,13 +275,13 @@ function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValu
       </motion.svg>
 
       {/* vertical scan line */}
-      <div className="rost-scan absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-rost-accent/40 to-transparent" />
+      <div className="rost-scan absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-rost-blue/40 to-transparent" />
 
       {/* grain */}
       <div className="rost-grain absolute inset-0 opacity-[0.05] mix-blend-soft-light" />
 
       {/* vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,oklch(0.12_0.012_65/0.85)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(23,23,23,0.85)_100%)]" />
     </div>
   );
 }
@@ -288,7 +292,7 @@ function BrandMark() {
   return (
     <a
       href="#platform"
-      className="group flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink"
+      className="group flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-blue/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-black"
       aria-label="ROST PLATFORM — home"
     >
       <span className="relative inline-flex h-9 w-9 items-center justify-center" aria-hidden>
@@ -299,7 +303,7 @@ function BrandMark() {
             width="31"
             height="31"
             rx="2"
-            stroke="oklch(0.92 0.018 80)"
+            stroke="#FFFFFF"
             strokeWidth="1.2"
             fill="none"
             className="origin-center transition-transform duration-500 group-hover:rotate-90"
@@ -308,7 +312,7 @@ function BrandMark() {
           {/* upward growth arrow / structure */}
           <motion.path
             d="M10 26 L18 10 L26 26"
-            stroke="oklch(0.524 0.149 238)"
+            stroke="#1C80BB"
             strokeWidth="1.6"
             fill="none"
             strokeLinecap="round"
@@ -319,7 +323,7 @@ function BrandMark() {
           />
           <motion.path
             d="M14 22 H22"
-            stroke="oklch(0.524 0.149 238)"
+            stroke="#1C80BB"
             strokeWidth="1.6"
             fill="none"
             strokeLinecap="round"
@@ -330,10 +334,10 @@ function BrandMark() {
         </svg>
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-display text-[15px] font-semibold tracking-[0.22em] text-rost-sand">
+        <span className="font-display text-[15px] font-semibold tracking-[0.22em] text-rost-white">
           ROST
         </span>
-        <span className="text-[9px] font-medium uppercase tracking-[0.4em] text-rost-sand-dim/70">
+        <span className="text-[9px] font-medium uppercase tracking-[0.4em] text-rost-gray">
           Platform
         </span>
       </span>
@@ -373,7 +377,7 @@ export default function Home() {
   return (
     <main
       ref={rootRef}
-      className="relative flex min-h-screen flex-col overflow-hidden bg-rost-ink text-rost-sand"
+      className="relative flex min-h-screen flex-col overflow-hidden bg-rost-black text-rost-white"
     >
       <BlueprintBackdrop mx={mx} my={my} />
 
@@ -459,10 +463,10 @@ export default function Home() {
             <a
               key={n.label}
               href={n.href}
-              className="group relative rounded-full px-4 py-2 text-[12px] font-medium uppercase tracking-[0.18em] text-rost-sand-dim transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand"
+              className="group relative rounded-full px-4 py-2 text-[12px] font-medium uppercase tracking-[0.18em] text-rost-gray transition-colors hover:text-rost-white focus-visible:outline-none focus-visible:text-rost-white"
             >
               {n.label}
-              <span className="absolute inset-x-4 -bottom-px h-px origin-left scale-x-0 bg-rost-accent/60 transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute inset-x-4 -bottom-px h-px origin-left scale-x-0 bg-rost-blue/70 transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </motion.nav>
@@ -475,21 +479,21 @@ export default function Home() {
         >
           <button
             onClick={() => setLocale((l) => (l === "EN" ? "FA" : "EN"))}
-            className="flex items-center gap-1.5 rounded-full border border-rost-line-strong/60 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-rost-sand-dim transition-colors hover:border-rost-accent/60 hover:text-rost-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink"
+            className="flex items-center gap-1.5 rounded-full border border-rost-line-strong/60 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-rost-gray transition-colors hover:border-rost-blue/60 hover:text-rost-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-blue/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-black"
             aria-label="Toggle language between English and Persian"
             aria-pressed={locale === "FA"}
           >
-            <span className={locale === "EN" ? "text-rost-sand" : ""} lang="en">
+            <span className={locale === "EN" ? "text-rost-white" : ""} lang="en">
               EN
             </span>
-            <span className="text-rost-sand-dim/40">/</span>
-            <span className={locale === "FA" ? "text-rost-sand" : ""} lang="fa" dir="rtl">
+            <span className="text-rost-gray/50">/</span>
+            <span className={locale === "FA" ? "text-rost-white" : ""} lang="fa" dir="rtl">
               فا
             </span>
           </button>
           <a
             href="#contact"
-            className="hidden items-center gap-1.5 rounded-full bg-rost-sand px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-rost-ink transition-all hover:bg-rost-accent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-ink sm:inline-flex"
+            className="hidden items-center gap-1.5 rounded-full bg-rost-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-rost-black transition-all hover:bg-rost-blue hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-blue/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-black sm:inline-flex"
           >
             Experience our role
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
@@ -508,7 +512,7 @@ export default function Home() {
         {/* headline */}
         <h1
           id="hero-heading"
-          className="max-w-[22ch] text-balance font-sans text-[clamp(2rem,5.4vw,4.6rem)] font-medium leading-[1.1] tracking-[-0.01em] text-rost-sand"
+          className="max-w-[22ch] text-balance font-sans text-[clamp(2rem,5.4vw,4.6rem)] font-medium leading-[1.1] tracking-[-0.01em] text-rost-white"
         >
           <motion.span
             variants={headlineWrap}
@@ -546,10 +550,10 @@ export default function Home() {
           className="mt-10 flex flex-col gap-10 md:mt-14 md:flex-row md:items-end md:justify-between"
         >
           <div className="flex flex-col gap-4">
-            <p className="font-display text-xl italic text-rost-accent md:text-2xl">
+            <p className="font-display text-xl italic text-rost-blue md:text-2xl">
               {t.tagline}
             </p>
-            <p className="max-w-[50ch] text-sm leading-relaxed text-rost-sand-dim/85 md:text-[15px] md:leading-relaxed">
+            <p className="max-w-[50ch] text-sm leading-relaxed text-[#a3a3a3] md:text-[15px] md:leading-relaxed">
               {t.heroCopy}
             </p>
           </div>
@@ -577,8 +581,8 @@ export default function Home() {
           transition={{ delay: 1.9, duration: 1 }}
           className="flex items-center gap-3 border-y border-rost-line-strong/40 py-3"
         >
-          <span className="hidden shrink-0 items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-rost-sand-dim/70 md:flex">
-            <Globe2 className="h-3.5 w-3.5 text-rost-accent" aria-hidden />
+          <span className="hidden shrink-0 items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-rost-gray md:flex">
+            <Globe2 className="h-3.5 w-3.5 text-rost-blue" aria-hidden />
             <span id="network-heading" className="sr-only">{t.globalPresence}</span>
             {t.globalPresence}
           </span>
@@ -587,24 +591,24 @@ export default function Home() {
               {[...t.presence, ...t.presence].map((p, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-rost-sand-dim"
+                  className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-rost-gray"
                 >
                   <span
-                    className="text-rost-sand"
+                    className="text-rost-white"
                     dir={rtl ? "rtl" : "ltr"}
                     lang={contentLang}
                   >
                     {p.city}
                   </span>
-                  <span className="text-rost-accent/70">·</span>
-                  <span className="text-rost-sand-dim/60">{p.code}</span>
+                  <span className="text-rost-blue/80">·</span>
+                  <span className="text-rost-gray/80">{p.code}</span>
                   <span className="text-rost-line-strong">|</span>
                 </span>
               ))}
             </div>
             {/* edge fades */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-rost-ink to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-rost-ink to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-rost-black to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-rost-black to-transparent" />
           </div>
         </motion.div>
       </section>
@@ -612,15 +616,15 @@ export default function Home() {
       {/* ============================ Footer (always EN, sticky) ============================ */}
       <footer
         id="contact"
-        className="relative z-20 mt-auto border-t border-rost-line-strong/40 bg-rost-ink/70 backdrop-blur-md"
+        className="relative z-20 mt-auto border-t border-rost-line-strong/40 bg-rost-black/80 backdrop-blur-md"
         aria-labelledby="contact-heading"
       >
         <h2 id="contact-heading" className="sr-only">
           Contact ROST PLATFORM
         </h2>
         <div className="mx-auto flex w-full max-w-[1480px] flex-col gap-3 px-5 py-3 md:flex-row md:items-center md:justify-between md:px-10">
-          <address className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] not-italic text-rost-sand-dim/80" dir="ltr">
-            <span className="font-display font-medium tracking-[0.18em] text-rost-sand">
+          <address className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] not-italic text-rost-gray" dir="ltr">
+            <span className="font-display font-medium tracking-[0.18em] text-rost-white">
               ROST PLATFORM LTD
             </span>
             <span className="hidden text-rost-line-strong md:inline" aria-hidden>|</span>
@@ -628,43 +632,43 @@ export default function Home() {
               href="https://www.rostplatform.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand focus-visible:underline"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-white focus-visible:outline-none focus-visible:text-rost-white focus-visible:underline"
             >
-              <Globe2 className="h-3 w-3 text-rost-accent/70" aria-hidden />
+              <Globe2 className="h-3 w-3 text-rost-blue/80" aria-hidden />
               www.rostplatform.com
             </a>
             <span className="hidden text-rost-line-strong md:inline" aria-hidden>|</span>
             <a
               href="mailto:info@rostplatform.com"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand focus-visible:underline"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-white focus-visible:outline-none focus-visible:text-rost-white focus-visible:underline"
             >
-              <Mail className="h-3 w-3 text-rost-accent/70" aria-hidden />
+              <Mail className="h-3 w-3 text-rost-blue/80" aria-hidden />
               info@rostplatform.com
             </a>
             <span className="hidden text-rost-line-strong md:inline" aria-hidden>|</span>
             <a
               href="tel:+447386296171"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand focus-visible:underline"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-white focus-visible:outline-none focus-visible:text-rost-white focus-visible:underline"
             >
-              <Phone className="h-3 w-3 text-rost-accent/70" aria-hidden />
+              <Phone className="h-3 w-3 text-rost-blue/80" aria-hidden />
               +44 73 86 296 171
             </a>
           </address>
-          <div className="flex items-center gap-4 text-[11px] text-rost-sand-dim/70" dir="ltr">
+          <div className="flex items-center gap-4 text-[11px] text-rost-gray" dir="ltr">
             <span className="hidden md:inline">© 2026 ROST PLATFORM LTD · Company No. 16445406</span>
             <a
               href="https://instagram.com/rostplatform"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-sand focus-visible:outline-none focus-visible:text-rost-sand focus-visible:underline"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-rost-white focus-visible:outline-none focus-visible:text-rost-white focus-visible:underline"
               aria-label="ROST PLATFORM on Instagram — @rostplatform"
             >
-              <Instagram className="h-3.5 w-3.5 text-rost-accent/70" aria-hidden />
+              <Instagram className="h-3.5 w-3.5 text-rost-blue/80" aria-hidden />
               @rostplatform
             </a>
             <a
               href="#platform"
-              className="inline-flex items-center gap-1.5 rounded-full border border-rost-line-strong/50 px-3 py-1 transition-colors hover:border-rost-accent/50 hover:text-rost-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-accent/70"
+              className="inline-flex items-center gap-1.5 rounded-full border border-rost-line-strong/50 px-3 py-1 transition-colors hover:border-rost-blue/50 hover:text-rost-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-blue/70"
             >
               Back to top
               <ArrowDown className="h-3 w-3 rotate-180" aria-hidden />
@@ -681,10 +685,10 @@ export default function Home() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div className="flex flex-col">
-      <dd className="font-display text-3xl font-semibold leading-none text-rost-sand md:text-4xl">
+      <dd className="font-display text-3xl font-semibold leading-none text-rost-white md:text-4xl">
         {n}
       </dd>
-      <dt className="mt-2 max-w-[16ch] text-[10px] uppercase leading-tight tracking-[0.18em] text-rost-sand-dim/70">
+      <dt className="mt-2 max-w-[16ch] text-[10px] uppercase leading-tight tracking-[0.18em] text-rost-gray">
         {label}
       </dt>
     </div>

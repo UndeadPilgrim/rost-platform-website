@@ -13,11 +13,12 @@
 - **Data & Services:** Pure static Next.js application without database overhead; GLM/Z.ai container residue, Prisma scaffolding, and unused templates removed.
 
 ## Explicit Decisions & Implementation Rules
-1. **Visual & Color Tokens:**
-   - Base: Ink charcoal (`--color-rost-ink`, `oklch(0.165 0.012 65)` / `#1a1714`)
-   - Text & Neutrals: Warm sand (`--color-rost-sand`, `oklch(0.92 0.018 80)`)
-   - Signature Accent: Architectural blue `#007acc` (`--color-rost-accent`, `oklch(0.524 0.149 238)`), used for SVG blueprint details, hero display italic highlights, buttons, and focus rings.
-   - Textures: Subtle SVG turbulence grain (`.rost-grain`), breathing radial glow (`.rost-breathe`), scan line (`.rost-scan`).
+1. **Canonical Brand Color System:**
+   - **ROST BLUE:** `#1C80BB` (`--color-rost-blue` / `--color-rost-accent`) — Primary accent for headline emphasis, tagline, brand mark arrow, active rings, glows, and key highlights.
+   - **ROST WHITE:** `#FFFFFF` (`--color-rost-white` / `--color-rost-sand`) — Main high-contrast foreground text, display headings, brand mark outline, and CTA button default background.
+   - **ROST BLACK:** `#171717` (`--color-rost-black` / `--color-rost-ink`) — Deep architectural background base canvas, vignette, and footer surface.
+   - **ROST GRAY:** `#767676` (`--color-rost-gray` / `--color-rost-sand-dim`) — Secondary neutral for body copy, ticker codes/separators, navigation links, blueprint structural lines, and footer text.
+   - **Decor & Textures:** SVG turbulence grain (`.rost-grain`), breathing radial blue glow (`.rost-breathe`), scan line (`.rost-scan`).
 2. **Layout & Spacing:**
    - Single-viewport fit (zero gap / zero unexpected overflow on standard desktop viewports).
    - Headline leads the hero without separate kicker line.
