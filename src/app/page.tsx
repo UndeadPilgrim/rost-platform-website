@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import {
   motion,
   useMotionValue,
@@ -292,55 +293,17 @@ function BrandMark() {
   return (
     <a
       href="#platform"
-      className="group flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-blue/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-black"
+      className="group inline-flex items-center rounded-md transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-blue/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-black"
       aria-label="ROST PLATFORM — home"
     >
-      <span className="relative inline-flex h-9 w-9 items-center justify-center" aria-hidden>
-        <svg viewBox="0 0 36 36" className="h-9 w-9" role="img" aria-label="ROST PLATFORM logo">
-          <rect
-            x="2.5"
-            y="2.5"
-            width="31"
-            height="31"
-            rx="2"
-            stroke="#FFFFFF"
-            strokeWidth="1.2"
-            fill="none"
-            className="origin-center transition-transform duration-500 group-hover:rotate-90"
-            style={{ transformBox: "fill-box" }}
-          />
-          {/* upward growth arrow / structure */}
-          <motion.path
-            d="M10 26 L18 10 L26 26"
-            stroke="#1C80BB"
-            strokeWidth="1.6"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.2, ease: EASE, delay: 0.6 }}
-          />
-          <motion.path
-            d="M14 22 H22"
-            stroke="#1C80BB"
-            strokeWidth="1.6"
-            fill="none"
-            strokeLinecap="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 0.8, ease: EASE, delay: 1.4 }}
-          />
-        </svg>
-      </span>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-[15px] font-semibold tracking-[0.22em] text-rost-white">
-          ROST
-        </span>
-        <span className="text-[9px] font-medium uppercase tracking-[0.4em] text-rost-gray">
-          Platform
-        </span>
-      </span>
+      <Image
+        src="/rost-platform-logo-white.png"
+        alt="ROST PLATFORM — Your Vision Would Grow"
+        width={1426}
+        height={205}
+        priority
+        className="h-7 w-auto object-contain md:h-8"
+      />
     </a>
   );
 }
