@@ -1,25 +1,79 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const optima = localFont({
+  src: [
+    {
+      path: "../fonts/optima/optima-regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/optima/optima-italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../fonts/optima/optima-medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/optima/optima-bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-optima",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["300", "400", "500", "600", "700"],
+const yekanBakh = localFont({
+  src: [
+    {
+      path: "../fonts/yekan-bakh/yekan-bakh-01-hairline.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../fonts/yekan-bakh/yekan-bakh-02-thin.ttf",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../fonts/yekan-bakh/yekan-bakh-03-light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../fonts/yekan-bakh/yekan-bakh-04-regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/yekan-bakh/yekan-bakh-05-medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/yekan-bakh/yekan-bakh-06-bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/yekan-bakh/yekan-bakh-07-heavy.ttf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../fonts/yekan-bakh/yekan-bakh-08-fat.ttf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-yekan-bakh",
   display: "swap",
 });
 
@@ -263,7 +317,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased bg-background text-foreground`}
+        className={`${optima.variable} ${yekanBakh.variable} antialiased bg-background text-foreground`}
       >
         {/* SEO + accessibility: skip link for keyboard users */}
         <a

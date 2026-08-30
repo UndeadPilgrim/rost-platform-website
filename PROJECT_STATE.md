@@ -6,6 +6,7 @@
 
 ## Explicit Decisions
 - **Brand Palette:** Canonical tokens defined in [`src/app/globals.css`](file:///e:/Projects/Rost_Platform_Website/src/app/globals.css): ROST BLUE (`#1C80BB`), ROST WHITE (`#FFFFFF`), ROST BLACK (`#171717`), ROST GRAY (`#767676`).
+- **Typography:** Official brand typography bundled via `next/font/local`: English uses **Optima** (`--font-optima`: Regular, Italic, Medium, Bold) and Persian uses **Yekan Bakh** (`--font-yekan-bakh`: Hairline through Fat).
 - **Viewport Layout:** Single-viewport composition fitted to 100vh on standard desktop viewports; sticky footer.
 - **Bilingual i18n:** EN/FA toggle flips hero and global presence ticker to Persian (`dir="rtl"`); header and footer are intentionally fixed in English (`dir="ltr"`).
 - **Navigation & CTA:** Nav links map to `#platform` (About), `#service` (Service), `#network` (Departments / Ticker), `#contact` (Footer). Header CTA is `EXPERIENCE OUR ROLE`.

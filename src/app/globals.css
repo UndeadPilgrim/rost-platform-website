@@ -6,8 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-optima);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -63,6 +63,9 @@
   --border: rgba(118, 118, 118, 0.2);
   --input: rgba(118, 118, 118, 0.25);
   --ring: #1c80bb;
+
+  --font-optima-stack: var(--font-optima), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-yekan-stack: var(--font-yekan-bakh), Tahoma, sans-serif;
 }
 
 .dark {
@@ -92,6 +95,16 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-optima-stack);
+  }
+
+  /* Language-specific typography routing */
+  [lang="fa"], [dir="rtl"], :lang(fa) {
+    font-family: var(--font-yekan-stack);
+  }
+
+  [lang="en"], [dir="ltr"], :lang(en) {
+    font-family: var(--font-optima-stack);
   }
 
   /* Visible keyboard focus ring for all interactive elements. */
@@ -109,11 +122,13 @@
 }
 
 /* ============================================================
-   ROST PLATFORM — Canonical Brand Color System
+   ROST PLATFORM — Canonical Brand Color & Typography System
    - ROST BLUE:  #1C80BB (Primary Accent)
    - ROST WHITE: #FFFFFF (Primary Contrast & Foreground)
    - ROST BLACK: #171717 (Deep Background Base)
    - ROST GRAY:  #767676 (Secondary Neutral)
+   - ENGLISH:    Optima (Humanist Serif/Sans)
+   - PERSIAN:    Yekan Bakh (Clean Modern Sans)
    ============================================================ */
 @theme {
   --color-rost-blue: #1C80BB;
@@ -130,7 +145,9 @@
   --color-rost-line: rgba(118, 118, 118, 0.18);
   --color-rost-line-strong: rgba(118, 118, 118, 0.35);
 
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-display: var(--font-optima), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-optima: var(--font-optima), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-persian: var(--font-yekan-bakh), Tahoma, sans-serif;
 }
 
 /* Custom thin scrollbar for the page */

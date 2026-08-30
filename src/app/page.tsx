@@ -102,14 +102,24 @@ const wordRise: Variants = {
 
 /* ----------------------------- helpers ------------------------------------ */
 
-function Word({ children, accent = false }: { children: string; accent?: boolean }) {
+function Word({
+  children,
+  accent = false,
+  rtl = false,
+}: {
+  children: string;
+  accent?: boolean;
+  rtl?: boolean;
+}) {
   return (
     <span className="inline-block overflow-hidden align-bottom pb-[0.12em] -mb-[0.12em]">
       <motion.span
         variants={wordRise}
         className={
           accent
-            ? "inline-block font-display italic text-rost-blue"
+            ? rtl
+              ? "inline-block font-bold text-rost-blue"
+              : "inline-block font-display italic text-rost-blue"
             : "inline-block"
         }
       >
@@ -475,7 +485,7 @@ export default function Home() {
         {/* headline */}
         <h1
           id="hero-heading"
-          className="max-w-[22ch] text-balance font-sans text-[clamp(2rem,5.4vw,4.6rem)] font-medium leading-[1.1] tracking-[-0.01em] text-rost-white"
+          className="max-w-[22ch] text-balance font-sans text-[clamp(2rem,4.8vw,4.35rem)] font-medium leading-[1.08] tracking-[-0.01em] text-rost-white"
         >
           <motion.span
             variants={headlineWrap}
@@ -484,7 +494,7 @@ export default function Home() {
             className="inline"
           >
             {t.headlinePlain.split(" ").map((w, i) => (
-              <Word key={`p-${i}`}>
+              <Word key={`p-${i}`} rtl={rtl}>
                 {w}&nbsp;
               </Word>
             ))}
@@ -498,7 +508,7 @@ export default function Home() {
             style={{ transitionDelay: "0.4s" }}
           >
             {t.headlineAccent.map((w, i) => (
-              <Word key={`a-${i}`} accent>
+              <Word key={`a-${i}`} accent rtl={rtl}>
                 {w}&nbsp;
               </Word>
             ))}
@@ -510,10 +520,16 @@ export default function Home() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.6, duration: 0.9, ease: EASE }}
-          className="mt-10 flex flex-col gap-10 md:mt-14 md:flex-row md:items-end md:justify-between"
+          className="mt-8 flex flex-col gap-8 md:mt-10 md:flex-row md:items-end md:justify-between"
         >
-          <div className="flex flex-col gap-4">
-            <p className="font-display text-xl italic text-rost-blue md:text-2xl">
+          <div className="flex flex-col gap-3">
+            <p
+              className={
+                rtl
+                  ? "text-xl font-bold text-rost-blue md:text-2xl"
+                  : "font-display text-xl italic text-rost-blue md:text-2xl"
+              }
+            >
               {t.tagline}
             </p>
             <p className="max-w-[50ch] text-sm leading-relaxed text-[#a3a3a3] md:text-[15px] md:leading-relaxed">
@@ -535,7 +551,7 @@ export default function Home() {
         id="network"
         lang={contentLang}
         dir={rtl ? "rtl" : "ltr"}
-        className="relative z-10 mx-auto w-full max-w-[1480px] px-5 pb-10 md:px-10 md:pb-14"
+        className="relative z-10 mx-auto w-full max-w-[1480px] px-5 pb-6 md:px-10 md:pb-8"
         aria-labelledby="network-heading"
       >
         <motion.div
