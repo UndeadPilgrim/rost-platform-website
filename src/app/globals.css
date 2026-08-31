@@ -176,12 +176,29 @@
 }
 .rost-breathe-2 { animation: rost-breathe-2 18s ease-in-out infinite; }
 
-/* Slow ticker marquee */
-@keyframes rost-marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Smooth continuous trust ticker marquee */
+@keyframes rost-marquee-ltr {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
-.rost-marquee { animation: rost-marquee 38s linear infinite; }
+.rost-marquee-ltr {
+  animation: rost-marquee-ltr 34s linear infinite;
+  will-change: transform;
+}
+
+@keyframes rost-marquee-rtl {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(50%, 0, 0); }
+}
+.rost-marquee-rtl {
+  animation: rost-marquee-rtl 36s linear infinite;
+  will-change: transform;
+}
+
+.rost-marquee-ltr:hover,
+.rost-marquee-rtl:hover {
+  animation-play-state: paused;
+}
 
 /* Blinking status dot */
 @keyframes rost-pulse-dot {

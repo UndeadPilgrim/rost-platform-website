@@ -43,14 +43,12 @@ const STRINGS = {
       "We help clients define direction, curate the right expertise, and align decisions from initial vision to final realization.",
     stat1: "Countries of experience",
     stat2: "Years of project record",
-    globalPresence: "Global presence",
-    presence: [
-      { city: "London", code: "UK" },
-      { city: "Mashhad", code: "IRAN" },
-      { city: "Tehran", code: "IRAN" },
-      { city: "Dubai", code: "UAE" },
-      { city: "Shanghai", code: "CHINA" },
-      { city: "São Paulo", code: "BRAZIL" },
+    ticker: [
+      "RIBA-ALIGNED METHODOLOGY",
+      "UK-REGISTERED COMPANY",
+      "RESEARCH-DRIVEN APPROACH",
+      "MULTIDISCIPLINARY EXPERT NETWORK",
+      "OUTSTANDING CURATOR AWARD",
     ],
   },
   FA: {
@@ -62,14 +60,12 @@ const STRINGS = {
       "ما به کارفرمایان کمک می‌کنیم جهت‌گیری را تعریف کنند، تخصص درست را کیوریت کنند، و تصمیمات را از چشم‌انداز اولیه تا تحقق نهایی هم‌راستا کنند.",
     stat1: "کشور تجربه",
     stat2: "سال سابقه پروژه",
-    globalPresence: "حضور جهانی",
-    presence: [
-      { city: "لندن", code: "UK" },
-      { city: "مشهد", code: "IRAN" },
-      { city: "تهران", code: "IRAN" },
-      { city: "دبی", code: "UAE" },
-      { city: "شانگهای", code: "CHINA" },
-      { city: "سائو پائولو", code: "BRAZIL" },
+    ticker: [
+      "همراستا با چارچوب RIBA",
+      "ثبت رسمی در انگلستان",
+      "رویکرد پژوهشمحور",
+      "شبکه چندرشتهای متخصصان",
+      "کیوریتور برجسته نمایشگاهی",
     ],
   },
 } as const;
@@ -546,41 +542,42 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ============================ Global presence ticker (translated) ============================ */}
+      {/* ============================ Trust & Credibility Ticker (translated) ============================ */}
       <section
         id="network"
         lang={contentLang}
         dir={rtl ? "rtl" : "ltr"}
         className="relative z-10 mx-auto w-full max-w-[1480px] px-5 pb-6 md:px-10 md:pb-8"
-        aria-labelledby="network-heading"
+        aria-label={locale === "EN" ? "Credentials and Trust" : "اعتبار و تعهدات"}
       >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.9, duration: 1 }}
-          className="flex items-center gap-3 border-y border-rost-line-strong/40 py-3"
+          className="relative flex items-center border-y border-rost-line-strong/40 py-3"
         >
-          <span className="hidden shrink-0 items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-rost-gray md:flex">
-            <Globe2 className="h-3.5 w-3.5 text-rost-blue" aria-hidden />
-            <span id="network-heading" className="sr-only">{t.globalPresence}</span>
-            {t.globalPresence}
-          </span>
           <div className="relative flex-1 overflow-hidden" aria-hidden>
-            <div className="rost-marquee flex w-max gap-8 whitespace-nowrap" dir="ltr">
-              {[...t.presence, ...t.presence].map((p, i) => (
+            <div
+              className={`flex w-max gap-8 whitespace-nowrap ${
+                rtl ? "rost-marquee-rtl" : "rost-marquee-ltr"
+              }`}
+              dir={rtl ? "rtl" : "ltr"}
+            >
+              {[...t.ticker, ...t.ticker, ...t.ticker, ...t.ticker].map((item, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-rost-gray"
+                  className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-rost-gray"
                 >
                   <span
-                    className="text-rost-white"
-                    dir={rtl ? "rtl" : "ltr"}
-                    lang={contentLang}
+                    className={
+                      rtl
+                        ? "font-persian font-medium tracking-normal text-[12px] text-rost-white"
+                        : "font-medium text-rost-white"
+                    }
                   >
-                    {p.city}
+                    {item}
                   </span>
                   <span className="text-rost-blue/80">·</span>
-                  <span className="text-rost-gray/80">{p.code}</span>
                   <span className="text-rost-line-strong">|</span>
                 </span>
               ))}
