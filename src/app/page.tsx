@@ -114,8 +114,10 @@ function Word({
         className={
           accent
             ? rtl
-              ? "inline-block font-bold text-rost-blue"
+              ? "inline-block font-persian font-bold text-rost-blue"
               : "inline-block font-display italic text-rost-blue"
+            : rtl
+            ? "inline-block font-persian"
             : "inline-block"
         }
       >
@@ -475,13 +477,17 @@ export default function Home() {
         id="service"
         lang={contentLang}
         dir={rtl ? "rtl" : "ltr"}
-        className="relative z-10 mx-auto flex w-full max-w-[1480px] flex-1 flex-col justify-center px-5 md:px-10"
+        className={`relative z-10 mx-auto flex w-full max-w-[1480px] flex-1 flex-col justify-center px-5 md:px-10 ${
+          rtl ? "font-persian" : ""
+        }`}
         aria-labelledby="hero-heading"
       >
         {/* headline */}
         <h1
           id="hero-heading"
-          className="max-w-[22ch] text-balance font-sans text-[clamp(2rem,4.8vw,4.35rem)] font-medium leading-[1.08] tracking-[-0.01em] text-rost-white"
+          className={`max-w-[22ch] text-balance ${
+            rtl ? "font-persian" : "font-sans"
+          } text-[clamp(2rem,4.8vw,4.35rem)] font-medium leading-[1.08] tracking-[-0.01em] text-rost-white`}
         >
           <motion.span
             variants={headlineWrap}
@@ -522,22 +528,26 @@ export default function Home() {
             <p
               className={
                 rtl
-                  ? "text-xl font-bold text-rost-blue md:text-2xl"
+                  ? "font-persian text-xl font-bold text-rost-blue md:text-2xl"
                   : "font-display text-xl italic text-rost-blue md:text-2xl"
               }
             >
               {t.tagline}
             </p>
-            <p className="max-w-[50ch] text-sm leading-relaxed text-[#a3a3a3] md:text-[15px] md:leading-relaxed">
+            <p
+              className={`max-w-[50ch] text-sm leading-relaxed text-[#a3a3a3] ${
+                rtl ? "font-persian" : ""
+              } md:text-[15px] md:leading-relaxed`}
+            >
               {t.heroCopy}
             </p>
           </div>
 
           {/* stat block */}
           <dl className="flex items-stretch gap-10 md:gap-14" dir="ltr">
-            <Stat n="59+" label={t.stat1} />
+            <Stat n="59+" label={t.stat1} rtl={rtl} />
             <span className="w-px bg-rost-line-strong/50" aria-hidden />
-            <Stat n="16+" label={t.stat2} />
+            <Stat n="16+" label={t.stat2} rtl={rtl} />
           </dl>
         </motion.div>
       </section>
@@ -658,13 +668,25 @@ export default function Home() {
 
 /* ----------------------------- small components ---------------------------- */
 
-function Stat({ n, label }: { n: string; label: string }) {
+function Stat({
+  n,
+  label,
+  rtl = false,
+}: {
+  n: string;
+  label: string;
+  rtl?: boolean;
+}) {
   return (
     <div className="flex flex-col">
       <dd className="font-display text-3xl font-semibold leading-none text-rost-white md:text-4xl">
         {n}
       </dd>
-      <dt className="mt-2 max-w-[16ch] text-[10px] uppercase leading-tight tracking-[0.18em] text-rost-gray">
+      <dt
+        className={`mt-2 max-w-[16ch] text-[10px] uppercase leading-tight text-rost-gray ${
+          rtl ? "font-persian tracking-normal text-[11px]" : "tracking-[0.18em]"
+        }`}
+      >
         {label}
       </dt>
     </div>
