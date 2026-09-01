@@ -43,6 +43,8 @@ const STRINGS = {
       "We help clients define direction, curate the right expertise, and align decisions from initial vision to final realization.",
     stat1: "Countries of experience",
     stat2: "Years of project record",
+    stat1Number: "59+",
+    stat2Number: "16+",
     ticker: [
       "RIBA-ALIGNED METHODOLOGY",
       "UK-REGISTERED COMPANY",
@@ -60,11 +62,13 @@ const STRINGS = {
       "ما به کارفرمایان کمک می‌کنیم جهت‌گیری را تعریف کنند، تخصص درست را کیوریت کنند، و تصمیمات را از چشم‌انداز اولیه تا تحقق نهایی هم‌راستا کنند.",
     stat1: "کشور تجربه",
     stat2: "سال سابقه پروژه",
+    stat1Number: "۵۹+",
+    stat2Number: "۱۶+",
     ticker: [
-      "همراستا با چارچوب RIBA",
+      "هم‌راستا با چارچوب RIBA",
       "ثبت رسمی در انگلستان",
-      "رویکرد پژوهشمحور",
-      "شبکه چندرشتهای متخصصان",
+      "رویکرد پژوهش‌محور",
+      "شبکه چندرشته‌ای متخصصان",
       "کیوریتور برجسته نمایشگاهی",
     ],
   },
@@ -127,170 +131,499 @@ function Word({
   );
 }
 
+type AxonPoint = readonly [x: number, y: number, z: number];
+
+const AXON_ORIGIN_X = 1110;
+const AXON_ORIGIN_Y = 500;
+const AXON_X_STEP = 48;
+const AXON_Y_STEP = 24;
+const AXON_Z_STEP = 44;
+
+function projectAxon([x, y, z]: AxonPoint, offsetY = 0) {
+  return {
+    x: AXON_ORIGIN_X + (x - y) * AXON_X_STEP,
+    y: AXON_ORIGIN_Y + (x + y) * AXON_Y_STEP - z * AXON_Z_STEP + offsetY,
+  };
+}
+
+function AxonLine({
+  from,
+  to,
+  offsetY = 0,
+  toOffsetY,
+  stroke = "currentColor",
+  strokeWidth = 0.9,
+  dash,
+}: {
+  from: AxonPoint;
+  to: AxonPoint;
+  offsetY?: number;
+  toOffsetY?: number;
+  stroke?: string;
+  strokeWidth?: number;
+  dash?: string;
+}) {
+  const a = projectAxon(from, offsetY);
+  const b = projectAxon(to, toOffsetY ?? offsetY);
+
+  return (
+    <line
+      x1={a.x}
+      y1={a.y}
+      x2={b.x}
+      y2={b.y}
+      stroke={stroke}
+      strokeWidth={strokeWidth}
+      strokeDasharray={dash}
+      strokeLinecap="round"
+      vectorEffect="non-scaling-stroke"
+    />
+  );
+}
+
+function AxonPolygon({
+  points,
+  offsetY = 0,
+  fill = "none",
+  stroke = "currentColor",
+  strokeWidth = 0.9,
+  dash,
+}: {
+  points: readonly AxonPoint[];
+  offsetY?: number;
+  fill?: string;
+  stroke?: string;
+  strokeWidth?: number;
+  dash?: string;
+}) {
+  return (
+    <polygon
+      points={points
+        .map((point) => {
+          const projected = projectAxon(point, offsetY);
+          return `${projected.x},${projected.y}`;
+        })
+        .join(" ")}
+      fill={fill}
+      stroke={stroke}
+      strokeWidth={strokeWidth}
+      strokeDasharray={dash}
+      strokeLinejoin="round"
+      vectorEffect="non-scaling-stroke"
+    />
+  );
+}
+
+function AxonVolume({
+  bounds,
+  offsetY = 0,
+  edge = "rgba(255,255,255,0.34)",
+  top = "rgba(255,255,255,0.045)",
+  right = "rgba(255,255,255,0.018)",
+  left = "rgba(255,255,255,0.028)",
+}: {
+  bounds: readonly [x1: number, y1: number, z1: number, x2: number, y2: number, z2: number];
+  offsetY?: number;
+  edge?: string;
+  top?: string;
+  right?: string;
+  left?: string;
+}) {
+  const [x1, y1, z1, x2, y2, z2] = bounds;
+  const bottom: readonly AxonPoint[] = [
+    [x1, y1, z1],
+    [x2, y1, z1],
+    [x2, y2, z1],
+    [x1, y2, z1],
+  ];
+  const upper: readonly AxonPoint[] = [
+    [x1, y1, z2],
+    [x2, y1, z2],
+    [x2, y2, z2],
+    [x1, y2, z2],
+  ];
+
+  return (
+    <g>
+      <AxonPolygon points={upper} offsetY={offsetY} fill={top} stroke={edge} />
+      <AxonPolygon
+        points={[bottom[1], bottom[2], upper[2], upper[1]]}
+        offsetY={offsetY}
+        fill={right}
+        stroke={edge}
+      />
+      <AxonPolygon
+        points={[bottom[2], bottom[3], upper[3], upper[2]]}
+        offsetY={offsetY}
+        fill={left}
+        stroke={edge}
+      />
+      <AxonPolygon points={bottom} offsetY={offsetY} stroke={edge} />
+      {bottom.map((point, index) => (
+        <AxonLine
+          key={index}
+          from={point}
+          to={upper[index]}
+          offsetY={offsetY}
+          stroke={edge}
+        />
+      ))}
+    </g>
+  );
+}
+
+function AxonRegistration({ point, offsetY = 0 }: { point: AxonPoint; offsetY?: number }) {
+  const projected = projectAxon(point, offsetY);
+
+  return (
+    <g stroke="rgba(255,255,255,0.22)" strokeWidth="0.8">
+      <line x1={projected.x - 9} y1={projected.y} x2={projected.x + 9} y2={projected.y} />
+      <line x1={projected.x} y1={projected.y - 9} x2={projected.x} y2={projected.y + 9} />
+      <circle cx={projected.x} cy={projected.y} r="3" fill="none" />
+    </g>
+  );
+}
+
 /* ----------------------------- background ---------------------------------- */
 
-function BlueprintBackdrop({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }) {
-  const tx = useTransform(mx, [-0.5, 0.5], [-18, 18]);
-  const ty = useTransform(my, [-0.5, 0.5], [-14, 14]);
-  const txSlow = useTransform(mx, [-0.5, 0.5], [-8, 8]);
-  const tySlow = useTransform(my, [-0.5, 0.5], [-6, 6]);
+function BlueprintBackdrop({
+  mx,
+  my,
+  rtl,
+}: {
+  mx: MotionValue<number>;
+  my: MotionValue<number>;
+  rtl: boolean;
+}) {
+  const backX = useTransform(mx, [-0.5, 0.5], [-2.5, 2.5]);
+  const backY = useTransform(my, [-0.5, 0.5], [-1.5, 1.5]);
+  const midX = useTransform(mx, [-0.5, 0.5], [-4.5, 4.5]);
+  const midY = useTransform(my, [-0.5, 0.5], [-3, 3]);
+  const frontX = useTransform(mx, [-0.5, 0.5], [-6.5, 6.5]);
+  const frontY = useTransform(my, [-0.5, 0.5], [-4.5, 4.5]);
+
+  const siteGridX = Array.from({ length: 10 }, (_, index) => -0.6 + index);
+  const siteGridY = Array.from({ length: 8 }, (_, index) => -0.6 + index);
+  const columnXs = [0.65, 2.85, 5.05, 7.2];
+  const columnYs = [0.7, 2.75, 4.9];
+  const facadeXs = Array.from({ length: 11 }, (_, index) => 0.8 + index * 0.64);
+  const stairSteps = Array.from({ length: 7 }, (_, index) => ({
+    y: 2.15 + index * 0.31,
+    z: 2.38 + index * 0.17,
+  }));
+
+  const drawProject = (compact: boolean) => (
+    <>
+      <motion.g style={{ x: backX, y: backY }}>
+        {/* Site plate: the project's shared ground and decision field. */}
+        <AxonPolygon
+          points={[
+            [-0.8, -0.8, 0],
+            [8.4, -0.8, 0],
+            [8.4, 6.5, 0],
+            [-0.8, 6.5, 0],
+          ]}
+          fill="rgba(255,255,255,0.008)"
+          stroke="rgba(255,255,255,0.18)"
+        />
+        <AxonPolygon
+          points={[
+            [0.25, 0.35, 0.02],
+            [7.55, 0.35, 0.02],
+            [7.55, 5.25, 0.02],
+            [0.25, 5.25, 0.02],
+          ]}
+          stroke="rgba(255,255,255,0.16)"
+          dash="5 8"
+        />
+
+        {!compact && (
+          <g>
+            {siteGridX.map((x) => (
+              <AxonLine
+                key={`gx-${x}`}
+                from={[x, -0.8, 0]}
+                to={[x, 6.5, 0]}
+                stroke="rgba(255,255,255,0.055)"
+                strokeWidth={0.7}
+              />
+            ))}
+            {siteGridY.map((y) => (
+              <AxonLine
+                key={`gy-${y}`}
+                from={[-0.8, y, 0]}
+                to={[8.4, y, 0]}
+                stroke="rgba(255,255,255,0.055)"
+                strokeWidth={0.7}
+              />
+            ))}
+
+            {/* A project brief lies within the same drawing, not outside it. */}
+            <AxonPolygon
+              points={[
+                [0.1, 4.55, 0.055],
+                [2.15, 4.55, 0.055],
+                [2.15, 6.02, 0.055],
+                [0.1, 6.02, 0.055],
+              ]}
+              fill="rgba(23,23,23,0.72)"
+              stroke="rgba(255,255,255,0.25)"
+            />
+            <AxonLine
+              from={[0.34, 4.86, 0.065]}
+              to={[1.82, 4.86, 0.065]}
+              stroke="rgba(255,255,255,0.24)"
+              strokeWidth={0.75}
+            />
+            <AxonLine
+              from={[0.34, 5.12, 0.065]}
+              to={[1.45, 5.12, 0.065]}
+              stroke="rgba(255,255,255,0.13)"
+              strokeWidth={0.7}
+            />
+            <AxonPolygon
+              points={[
+                [1.48, 5.28, 0.065],
+                [1.92, 5.28, 0.065],
+                [1.92, 5.74, 0.065],
+                [1.48, 5.74, 0.065],
+              ]}
+              stroke="rgba(28,128,187,0.56)"
+              strokeWidth={0.85}
+            />
+            <AxonLine
+              from={[0.34, 5.75, 0.065]}
+              to={[1.16, 5.75, 0.065]}
+              stroke="rgba(255,255,255,0.12)"
+              strokeWidth={0.7}
+            />
+
+            <AxonRegistration point={[-0.8, 6.5, 0]} />
+            <AxonRegistration point={[8.4, -0.8, 0]} />
+          </g>
+        )}
+
+        {/* Registration lines keep every discipline visibly aligned. */}
+        {(
+          [
+            [0.25, 0.35, 0],
+            [7.55, 0.35, 0],
+            [7.55, 5.25, 0],
+            [0.25, 5.25, 0],
+          ] as readonly AxonPoint[]
+        )
+          .slice(0, compact ? 2 : 4)
+          .map((point, index) => (
+            <AxonLine
+              key={`register-${index}`}
+              from={point}
+              to={[point[0], point[1], 6.1]}
+              toOffsetY={-236}
+              stroke="rgba(255,255,255,0.12)"
+              strokeWidth={0.7}
+              dash="3 9"
+            />
+          ))}
+      </motion.g>
+
+      <motion.g style={{ x: midX, y: midY }}>
+        {/* Structural layer. */}
+        <AxonVolume
+          bounds={[0.25, 0.35, 0.42, 7.55, 5.25, 0.62]}
+          offsetY={-34}
+          edge="rgba(255,255,255,0.27)"
+          top="rgba(255,255,255,0.025)"
+        />
+        {columnXs.flatMap((x) =>
+          columnYs.map((y) => (
+            <AxonLine
+              key={`column-${x}-${y}`}
+              from={[x, y, 0.62]}
+              to={[x, y, 2.18]}
+              offsetY={-34}
+              stroke="rgba(255,255,255,0.31)"
+              strokeWidth={compact ? 1 : 0.85}
+            />
+          )),
+        )}
+        {columnYs.map((y) => (
+          <AxonLine
+            key={`beam-y-${y}`}
+            from={[0.65, y, 2.18]}
+            to={[7.2, y, 2.18]}
+            offsetY={-34}
+            stroke="rgba(255,255,255,0.25)"
+          />
+        ))}
+        {columnXs.map((x) => (
+          <AxonLine
+            key={`beam-x-${x}`}
+            from={[x, 0.7, 2.18]}
+            to={[x, 4.9, 2.18]}
+            offsetY={-34}
+            stroke="rgba(255,255,255,0.25)"
+          />
+        ))}
+
+        {/* Spatial layer: three volumes form one courtyard building. */}
+        <AxonVolume bounds={[0.55, 0.65, 2.32, 2.55, 4.75, 3.72]} offsetY={-103} />
+        <AxonVolume bounds={[5.02, 0.65, 2.32, 7.25, 4.75, 3.72]} offsetY={-103} />
+        <AxonVolume bounds={[2.55, 0.65, 2.32, 5.02, 1.72, 3.72]} offsetY={-103} />
+        <AxonPolygon
+          points={[
+            [2.7, 1.95, 2.34],
+            [4.88, 1.95, 2.34],
+            [4.88, 4.6, 2.34],
+            [2.7, 4.6, 2.34],
+          ]}
+          offsetY={-103}
+          stroke="rgba(255,255,255,0.19)"
+          dash="4 6"
+        />
+        {stairSteps.map((step, index) => (
+          <AxonLine
+            key={`stair-${index}`}
+            from={[2.82, step.y, step.z]}
+            to={[4.56, step.y, step.z]}
+            offsetY={-103}
+            stroke={
+              index === stairSteps.length - 1
+                ? "rgba(28,128,187,0.68)"
+                : "rgba(255,255,255,0.28)"
+            }
+            strokeWidth={0.8}
+          />
+        ))}
+        <AxonLine
+          from={[2.82, stairSteps[0].y, stairSteps[0].z]}
+          to={[2.82, stairSteps[stairSteps.length - 1].y, stairSteps[stairSteps.length - 1].z]}
+          offsetY={-103}
+          stroke="rgba(28,128,187,0.5)"
+          strokeWidth={1.1}
+        />
+      </motion.g>
+
+      <motion.g style={{ x: frontX, y: frontY }}>
+        {/* Upper envelope retains the courtyard and reads as architecture first. */}
+        <AxonVolume
+          bounds={[0.82, 0.48, 4.02, 3.28, 4.7, 5.38]}
+          offsetY={-166}
+          edge="rgba(255,255,255,0.39)"
+          top="rgba(255,255,255,0.052)"
+        />
+        <AxonVolume
+          bounds={[4.36, 0.48, 4.02, 7.3, 4.7, 5.38]}
+          offsetY={-166}
+          edge="rgba(255,255,255,0.39)"
+          top="rgba(255,255,255,0.052)"
+        />
+        <AxonVolume
+          bounds={[3.28, 0.48, 4.02, 4.36, 1.42, 5.38]}
+          offsetY={-166}
+          edge="rgba(255,255,255,0.39)"
+          top="rgba(255,255,255,0.052)"
+        />
+
+        {!compact && (
+          <g>
+            {facadeXs.map((x, index) => (
+              <AxonLine
+                key={`facade-${x}`}
+                from={[x, 4.82, 3.98]}
+                to={[x, 4.82, 5.43]}
+                offsetY={-166}
+                stroke={index === 7 ? "rgba(28,128,187,0.7)" : "rgba(255,255,255,0.22)"}
+                strokeWidth={index === 7 ? 1.05 : 0.72}
+              />
+            ))}
+            <AxonLine
+              from={[0.8, 4.82, 3.98]}
+              to={[7.2, 4.82, 3.98]}
+              offsetY={-166}
+              stroke="rgba(255,255,255,0.22)"
+            />
+            <AxonLine
+              from={[0.8, 4.82, 5.43]}
+              to={[7.2, 4.82, 5.43]}
+              offsetY={-166}
+              stroke="rgba(255,255,255,0.22)"
+            />
+          </g>
+        )}
+
+        {/* Roof and integrated lighting layer. */}
+        <AxonVolume
+          bounds={[0.35, 0.08, 5.62, 7.72, 5.2, 5.78]}
+          offsetY={-236}
+          edge="rgba(255,255,255,0.38)"
+          top="rgba(255,255,255,0.035)"
+        />
+        <AxonPolygon
+          points={[
+            [2.95, 1.72, 5.79],
+            [4.86, 1.72, 5.79],
+            [4.86, 3.58, 5.79],
+            [2.95, 3.58, 5.79],
+          ]}
+          offsetY={-236}
+          fill="rgba(23,23,23,0.72)"
+          stroke="rgba(255,255,255,0.22)"
+          dash="4 5"
+        />
+        {[1.15, 2.12, 3.1, 4.08].slice(0, compact ? 2 : 4).map((y) => (
+          <AxonLine
+            key={`light-${y}`}
+            from={[1.2, y, 5.58]}
+            to={[6.82, y, 5.58]}
+            offsetY={-236}
+            stroke="rgba(28,128,187,0.42)"
+            strokeWidth={0.78}
+          />
+        ))}
+        <AxonLine
+          from={[0.35, 5.2, 5.79]}
+          to={[7.72, 5.2, 5.79]}
+          offsetY={-236}
+          stroke="rgba(28,128,187,0.78)"
+          strokeWidth={1.2}
+        />
+
+        {!compact && (
+          <g>
+            <AxonLine
+              from={[8.12, -0.15, 0.1]}
+              to={[8.12, -0.15, 6.05]}
+              toOffsetY={-236}
+              stroke="rgba(255,255,255,0.15)"
+              strokeWidth={0.7}
+              dash="2 7"
+            />
+            <AxonRegistration point={[7.72, 0.08, 5.78]} offsetY={-236} />
+          </g>
+        )}
+      </motion.g>
+    </>
+  );
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      {/* black base */}
       <div className="absolute inset-0 bg-rost-black" />
-
-      {/* blue radial glow, breathing */}
-      <motion.div
-        style={{ x: txSlow, y: tySlow }}
-        className="absolute inset-0"
-      >
-        <div className="rost-breathe absolute -top-1/3 left-1/2 h-[80vh] w-[80vh] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(28,128,187,0.22),transparent_65%)] blur-2xl" />
-        <div className="rost-breathe-2 absolute bottom-[-20%] right-[-10%] h-[60vh] w-[60vh] rounded-full bg-[radial-gradient(circle,rgba(21,101,148,0.18),transparent_60%)] blur-2xl" />
-      </motion.div>
-
-      {/* faint architectural grid */}
-      <div
-        className="absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #767676 1px, transparent 1px), linear-gradient(to bottom, #767676 1px, transparent 1px)",
-          backgroundSize: "88px 88px",
-        }}
-      />
-
-      {/* blueprint line-art */}
-      <motion.svg
-        style={{ x: tx, y: ty }}
-        viewBox="0 0 1440 900"
+      <svg
+        viewBox="0 0 1600 900"
         preserveAspectRatio="xMidYMid slice"
-        className="absolute inset-0 h-full w-full"
+        className="rost-axonometric absolute inset-0 hidden h-full w-full md:block"
+        style={{ opacity: rtl ? 0.74 : 0.82 }}
       >
-        <defs>
-          <linearGradient id="rost-line" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#767676" stopOpacity="0.02" />
-            <stop offset="50%" stopColor="#767676" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#767676" stopOpacity="0.02" />
-          </linearGradient>
-        </defs>
-
-        {/* horizon */}
-        <motion.path
-          d="M0 620 H1440"
-          stroke="url(#rost-line)"
-          strokeWidth="1"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 1.8, ease: EASE, delay: 0.2 }}
-        />
-        {/* mid line */}
-        <motion.path
-          d="M0 300 H1440"
-          stroke="url(#rost-line)"
-          strokeWidth="1"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 1.8, ease: EASE, delay: 0.35 }}
-        />
-
-        {/* abstract structure: tower silhouette */}
-        <motion.g
-          stroke="rgba(118, 118, 118, 0.24)"
-          strokeWidth="1"
-          fill="none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.4, delay: 0.8 }}
-        >
-          <motion.path
-            d="M170 620 L170 250 L210 230 L250 250 L250 620"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2.4, ease: EASE, delay: 0.5 }}
-          />
-          <motion.path
-            d="M170 360 H250 M170 470 H250 M170 560 H250"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.6, ease: EASE, delay: 1.1 }}
-          />
-        </motion.g>
-
-        {/* second structure */}
-        <motion.g
-          stroke="rgba(118, 118, 118, 0.18)"
-          strokeWidth="1"
-          fill="none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.4, delay: 1 }}
-        >
-          <motion.path
-            d="M1180 620 L1180 330 L1220 318 L1270 330 L1270 620"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2.2, ease: EASE, delay: 0.7 }}
-          />
-          <motion.path
-            d="M1180 410 H1270 M1180 500 H1270 M1180 580 H1270"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, ease: EASE, delay: 1.3 }}
-          />
-        </motion.g>
-
-        {/* large portal circle */}
-        <motion.circle
-          cx="720"
-          cy="460"
-          r="300"
-          stroke="rgba(28, 128, 187, 0.22)"
-          strokeWidth="1"
-          fill="none"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 3, ease: EASE, delay: 0.4 }}
-        />
-        <motion.circle
-          cx="720"
-          cy="460"
-          r="180"
-          stroke="rgba(118, 118, 118, 0.14)"
-          strokeWidth="1"
-          fill="none"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 2.4, ease: EASE, delay: 0.9 }}
-        />
-
-        {/* dimension ticks on horizon */}
-        <motion.g
-          stroke="rgba(118, 118, 118, 0.35)"
-          strokeWidth="1"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.6 }}
-        >
-          {Array.from({ length: 36 }).map((_, i) => (
-            <line
-              key={i}
-              x1={i * 40}
-              y1={618}
-              x2={i * 40}
-              y2={i % 5 === 0 ? 605 : 613}
-            />
-          ))}
-        </motion.g>
-      </motion.svg>
-
-      {/* vertical scan line */}
-      <div className="rost-scan absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-rost-blue/40 to-transparent" />
-
-      {/* grain */}
-      <div className="rost-grain absolute inset-0 opacity-[0.05] mix-blend-soft-light" />
-
-      {/* vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(23,23,23,0.85)_100%)]" />
+        <g transform={rtl ? "translate(-470 20)" : undefined}>{drawProject(false)}</g>
+      </svg>
+      <svg
+        viewBox="700 60 760 820"
+        preserveAspectRatio="xMidYMax meet"
+        className="rost-axonometric absolute inset-0 h-[100svh] w-full md:hidden"
+        style={{ opacity: rtl ? 0.27 : 0.32 }}
+      >
+        <g transform={rtl ? "translate(0 190)" : "translate(0 120)"}>{drawProject(true)}</g>
+      </svg>
     </div>
   );
 }
@@ -350,7 +683,7 @@ export default function Home() {
       ref={rootRef}
       className="relative flex min-h-screen flex-col overflow-hidden bg-rost-black text-rost-white"
     >
-      <BlueprintBackdrop mx={mx} my={my} />
+      <BlueprintBackdrop mx={mx} my={my} rtl={rtl} />
 
       {/* ====================================================================
           SEO + a11y: screen-reader-only expanded description.
@@ -486,8 +819,10 @@ export default function Home() {
         <h1
           id="hero-heading"
           className={`max-w-[22ch] text-balance ${
-            rtl ? "font-persian" : "font-sans"
-          } text-[clamp(2rem,4.8vw,4.35rem)] font-medium leading-[1.08] tracking-[-0.01em] text-rost-white`}
+            rtl
+              ? "font-persian text-[clamp(2.15rem,5.1vw,4.65rem)] leading-[1.12]"
+              : "font-sans text-[clamp(2rem,4.8vw,4.35rem)] leading-[1.08]"
+          } font-medium tracking-[-0.01em] text-rost-white`}
         >
           <motion.span
             variants={headlineWrap}
@@ -528,7 +863,7 @@ export default function Home() {
             <p
               className={
                 rtl
-                  ? "font-persian text-xl font-bold text-rost-blue md:text-2xl"
+                  ? "font-persian text-xl font-bold text-rost-blue md:text-[1.65rem]"
                   : "font-display text-xl italic text-rost-blue md:text-2xl"
               }
             >
@@ -536,8 +871,8 @@ export default function Home() {
             </p>
             <p
               className={`max-w-[50ch] text-sm leading-relaxed text-[#a3a3a3] ${
-                rtl ? "font-persian" : ""
-              } md:text-[15px] md:leading-relaxed`}
+                rtl ? "font-persian text-[15px] md:text-[16px]" : "md:text-[15px]"
+              } md:leading-relaxed`}
             >
               {t.heroCopy}
             </p>
@@ -545,9 +880,9 @@ export default function Home() {
 
           {/* stat block */}
           <dl className="flex items-stretch gap-10 md:gap-14" dir="ltr">
-            <Stat n="59+" label={t.stat1} rtl={rtl} />
+            <Stat n={t.stat1Number} label={t.stat1} rtl={rtl} />
             <span className="w-px bg-rost-line-strong/50" aria-hidden />
-            <Stat n="16+" label={t.stat2} rtl={rtl} />
+            <Stat n={t.stat2Number} label={t.stat2} rtl={rtl} />
           </dl>
         </motion.div>
       </section>
@@ -581,7 +916,7 @@ export default function Home() {
                   <span
                     className={
                       rtl
-                        ? "font-persian font-medium tracking-normal text-[12px] text-rost-white"
+                        ? "font-persian text-[13px] font-medium tracking-normal text-rost-white"
                         : "font-medium text-rost-white"
                     }
                   >
@@ -679,12 +1014,20 @@ function Stat({
 }) {
   return (
     <div className="flex flex-col">
-      <dd className="font-display text-3xl font-semibold leading-none text-rost-white md:text-4xl">
+      <dd
+        className={
+          rtl
+            ? "font-persian text-3xl font-bold leading-none text-rost-white md:text-[2.6rem]"
+            : "font-display text-3xl font-semibold leading-none text-rost-white md:text-4xl"
+        }
+      >
         {n}
       </dd>
       <dt
         className={`mt-2 max-w-[16ch] text-[10px] uppercase leading-tight text-rost-gray ${
-          rtl ? "font-persian tracking-normal text-[11px]" : "tracking-[0.18em]"
+          rtl
+            ? "font-persian text-[11px] font-medium tracking-normal md:text-[12px]"
+            : "tracking-[0.18em]"
         }`}
       >
         {label}

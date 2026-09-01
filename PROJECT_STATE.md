@@ -1,7 +1,8 @@
 # ROST PLATFORM — Project State
 
 ## Current Baseline
-- **Approved State:** Single-viewport animated homepage for ROST PLATFORM ([`src/app/page.tsx`](file:///e:/Projects/Rost_Platform_Website/src/app/page.tsx)), clean of container/scaffold residue, building with Bun/Turbopack.
+- **Approved State:** The single-viewport homepage foreground, copy, navigation, typography, statistics, trust ticker, language behavior, and brand colors remain the approved baseline ([`src/app/page.tsx`](file:///e:/Projects/Rost_Platform_Website/src/app/page.tsx)).
+- **Current Candidate:** The hero background is now one responsive exploded architectural axonometric. Implementation is complete; Director visual acceptance is not yet recorded.
 - **Original Import Tag:** `glm-original-baseline` pinned at `41b2fd8`.
 
 ## Explicit Decisions
@@ -13,14 +14,11 @@
 - **Architecture:** Pure static Next.js frontend; no database or container harness dependencies.
 
 ## In-Progress Work & Blockers
-- **In-Progress:** None.
+- **In-Progress:** Homepage hero-background candidate awaiting Director review.
 - **Blockers:** None.
 
 ## Meaningful Verification
 - `bun run lint` passes (0 errors, 0 warnings).
 - `bun run build` passes with all static routes prerendered.
-- Visual inspection verified in browser devtools for both EN and FA modes.
-
-## Agreed Next Actions
-- Maintain current implementation as approved baseline.
-- Await user instructions for subsequent feature work or multi-page expansion.
+- Impeccable detector returns no findings for the changed UI files.
+- Browser inspection verified English and Persian at desktop and mobile widths; the final console was clean.

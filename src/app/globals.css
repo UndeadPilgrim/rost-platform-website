@@ -166,23 +166,17 @@
   border-radius: 999px;
 }
 
-/* Ambient grain texture */
-.rost-grain {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+/* Crisp technical drawing treatment for the hero axonometric. */
+.rost-axonometric {
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
 }
 
-/* Animated gradient glow */
-@keyframes rost-breathe {
-  0%, 100% { opacity: 0.35; transform: translate3d(0,0,0) scale(1); }
-  50%      { opacity: 0.6;  transform: translate3d(0,0,0) scale(1.08); }
+.rost-axonometric line,
+.rost-axonometric polygon,
+.rost-axonometric circle {
+  vector-effect: non-scaling-stroke;
 }
-.rost-breathe { animation: rost-breathe 14s ease-in-out infinite; }
-
-@keyframes rost-breathe-2 {
-  0%, 100% { opacity: 0.25; transform: translate3d(0,0,0) scale(1.05); }
-  50%      { opacity: 0.5;  transform: translate3d(0,0,0) scale(0.95); }
-}
-.rost-breathe-2 { animation: rost-breathe-2 18s ease-in-out infinite; }
 
 /* Smooth continuous trust ticker marquee */
 @keyframes rost-marquee-ltr {
@@ -214,15 +208,6 @@
   50%      { opacity: 0.5; box-shadow: 0 0 0 6px rgba(28, 128, 187, 0); }
 }
 .rost-pulse-dot { animation: rost-pulse-dot 2.6s ease-in-out infinite; }
-
-/* Vertical scan line */
-@keyframes rost-scan {
-  0%   { transform: translateY(-100%); opacity: 0; }
-  10%  { opacity: 0.8; }
-  90%  { opacity: 0.8; }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
-.rost-scan { animation: rost-scan 9s linear infinite; }
 
 /* Headline italic accent underline draw */
 @keyframes rost-underline {
