@@ -135,6 +135,11 @@
   --color-rost-white: #FFFFFF;
   --color-rost-black: #171717;
   --color-rost-gray: #767676;
+  /* Annotation tone: Rost Gray alone fails AA (~4.0:1) at the 10-13px
+     drafting labels. This token mixes approved brand values only -- 55%
+     ROST WHITE over ROST BLACK (~#979797, ~6.2:1) -- for small uppercase
+     margin/stat annotations. No new hue, no new asset. */
+  --color-rost-annotation: color-mix(in srgb, var(--color-rost-white) 55%, var(--color-rost-black));
 
   /* Semantic Theme Aliases */
   --color-rost-ink: #171717;
@@ -217,3 +222,36 @@
 
 /* Utility text balance */
 .text-balance { text-wrap: balance; }
+
+/* ============================================================
+   Drafting-sheet document utilities
+   ============================================================ */
+
+/* Wide uppercase annotation tracking; safely resets for Persian
+   (letter-spacing breaks Arabic-script joining). */
+.rost-track { letter-spacing: 0.24em; }
+:lang(fa) .rost-track,
+.rost-track:lang(fa) { letter-spacing: normal; }
+
+/* Scroll cue: a hairline that falls, pauses, and dissolves. */
+@keyframes rost-cue-fall {
+  0%   { transform: scaleY(0);   opacity: 0; }
+  25%  { transform: scaleY(1);   opacity: 1; }
+  70%  { transform: scaleY(1);   opacity: 1; }
+  100% { transform: scaleY(1);   opacity: 0; }
+}
+.rost-cue-line {
+  transform-origin: top center;
+  animation: rost-cue-fall 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rost-cue-line { animation: none; transform: scaleY(1); opacity: 0.6; }
+}
+
+/* Anchors on the sheet clear the header band. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+section[id], footer[id] { scroll-margin-top: 5.5rem; }
+
+::selection { background: rgba(28, 128, 187, 0.85); color: #fff; }

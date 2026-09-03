@@ -92,7 +92,7 @@ const jsonLd = {
       alternateName: "ROST PLATFORM LTD",
       legalName: "ROST PLATFORM LTD",
       description:
-        "A multidisciplinary platform for guiding development in Architecture & Construction. RIBA-aligned Strategic Design Consultant with a global network across the UK, Iran, the UAE, China and Brazil.",
+        "A multidisciplinary platform for guiding development in Architecture & Construction. RIBA-aligned Strategic Design Advisor with a global network across the UK, Iran, the UAE, China and Brazil.",
       url: SITE_URL,
       logo: `${SITE_URL}/favicon.png`,
       image: OG_IMAGE,
@@ -131,7 +131,7 @@ const jsonLd = {
       founder: {
         "@type": "Person",
         name: "Dr. Taha Fallah",
-        jobTitle: "Founder & Strategic Design Consultant",
+        jobTitle: "Founder & Strategic Design Advisor",
         memberOf: {
           "@type": "Organization",
           name: "Royal Institute of British Architects (RIBA)",
@@ -157,9 +157,9 @@ const jsonLd = {
       "@type": "ProfessionalService",
       "@id": `${SITE_URL}/#professional-service`,
       parentOrganization: { "@id": `${SITE_URL}/#organization` },
-      name: "ROST PLATFORM — Strategic Design Consultant",
+      name: "ROST PLATFORM — Strategic Design Advisor",
       description:
-        "Strategic Design Consultant for Architecture & Construction projects, aligned with the RIBA Plan of Work 2020. We curate expertise and steer the development journey from first vision to final realization.",
+        "Strategic Design Advisor for Architecture & Construction projects, aligned with the RIBA Plan of Work 2020. We curate expertise and steer the development journey from first vision to final realization.",
       url: SITE_URL,
       image: OG_IMAGE,
       telephone: "+44 73 86 296 171",
@@ -175,7 +175,7 @@ const jsonLd = {
       knowsAbout: [
         "Architecture",
         "Construction",
-        "Strategic Design Consultancy",
+        "Strategic Design Advisory",
         "RIBA Plan of Work 2020",
         "RIBA Client Adviser",
         "Project Management",
@@ -185,7 +185,7 @@ const jsonLd = {
         "Hospitality",
       ],
       serviceType: [
-        "Strategic Design Consultant",
+        "Strategic Design Advisor",
         "RIBA Client Adviser",
         "Project Curation & Steering",
         "Architectural Lighting Design",
@@ -214,11 +214,11 @@ const jsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "ROST PLATFORM — Architecture & Construction Strategic Consultant",
+    default: "ROST PLATFORM — Architecture & Construction Strategic Advisor",
     template: "%s · ROST PLATFORM",
   },
   description:
-    "ROST PLATFORM is a multidisciplinary consultancy guiding development in Architecture & Construction. RIBA-aligned Strategic Design Consultant across the UK, Iran, the UAE, China and Brazil. Your vision would grow.",
+    "ROST PLATFORM is a multidisciplinary consultancy guiding development in Architecture & Construction. RIBA-aligned Strategic Design Advisor across the UK, Iran, the UAE, China and Brazil. Your vision would grow.",
   applicationName: "ROST PLATFORM",
   authors: [{ name: "ROST PLATFORM LTD", url: SITE_URL }],
   creator: "ROST PLATFORM LTD",
@@ -227,7 +227,7 @@ export const metadata: Metadata = {
     "ROST PLATFORM",
     "architecture consultancy",
     "construction consultant",
-    "Strategic Design Consultant",
+    "Strategic Design Advisor",
     "RIBA Client Adviser",
     "RIBA Plan of Work",
     "architecture & construction",
@@ -267,7 +267,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "ROST PLATFORM",
     title:
-      "ROST PLATFORM — Architecture & Construction Strategic Consultant",
+      "ROST PLATFORM — Architecture & Construction Strategic Advisor",
     description:
       "A multidisciplinary platform guiding development in Architecture & Construction. RIBA-aligned. UK · Iran · UAE · China · Brazil. Your vision would grow.",
     images: [
@@ -275,7 +275,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1344,
         height: 768,
-        alt: "ROST PLATFORM — Strategic Design Consultant for Architecture & Construction",
+        alt: "ROST PLATFORM — Strategic Design Advisor for Architecture & Construction",
         type: "image/png",
       },
     ],
@@ -283,7 +283,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "ROST PLATFORM — Architecture & Construction Strategic Consultant",
+      "ROST PLATFORM — Architecture & Construction Strategic Advisor",
     description:
       "A multidisciplinary platform guiding development in Architecture & Construction. RIBA-aligned. Your vision would grow.",
     images: [OG_IMAGE],
