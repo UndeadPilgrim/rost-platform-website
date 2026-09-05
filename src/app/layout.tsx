@@ -77,7 +77,11 @@ const yekanBakh = localFont({
   display: "swap",
 });
 
-const SITE_URL = "https://www.rostplatform.com";
+/* Canonical site URL: the production domain, overridable at build time for
+   preview deployments (e.g. NEXT_SITE_URL=https://undeadpilgrim.github.io
+   for GitHub Pages). OG/JSON-LD absolute URLs follow it. */
+const SITE_URL =
+  process.env.NEXT_SITE_URL ?? "https://www.rostplatform.com";
 const OG_IMAGE = `${SITE_URL}/og.png`;
 
 /* JSON-LD structured data — Organization + ProfessionalService + WebSite

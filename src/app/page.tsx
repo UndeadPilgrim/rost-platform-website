@@ -1493,7 +1493,9 @@ function BrandMark() {
       aria-label="ROST PLATFORM — home"
     >
       <Image
-        src="/rost-platform-logo-white.png"
+        src={process.env.NEXT_BASE_PATH
+          ? "/rost-platform-website/rost-platform-logo-white.png"
+          : "/rost-platform-logo-white.png"}
         alt="ROST PLATFORM — Your Vision Would Grow"
         width={1426}
         height={205}
