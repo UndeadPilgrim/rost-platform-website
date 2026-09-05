@@ -39,6 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
 # tooling session residue
 .playwright-mcp/
 .agents/
+
+# local reference material (not part of the deployed site)
+/REFERENCES/
+
+# npm lockfile generated incidentally (package manager is bun — bun.lock)
+package-lock.json

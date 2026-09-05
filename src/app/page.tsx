@@ -72,12 +72,17 @@ interface Dict {
   departmentsIntro: string;
   plateNameA: string;
   plateNameB: string;
-  plateDescA: string;
-  plateDescB: string;
+  capabilitiesA: string[];
+  capabilitiesB: string[];
+  complementA: string;
+  complementB: string;
   plateTagA: string;
   plateTagB: string;
+  captionA: string;
+  captionB: string;
   // 04 · Network
   networkHeading: string;
+  networkIntro: string;
   networkCountries: string[];
   networkRoles: string[];
 }
@@ -88,7 +93,7 @@ const STRINGS: Record<Locale, Dict> = {
     headlineLine1: "A MULTIDISCIPLINARY PLATFORM",
     headlineLine2: "FOR GUIDING DEVELOPMENT",
     headlineLine3Plain: "IN",
-    headlineLine3Accent: ["THE", "BUILT", "ENVIRONMENT."],
+    headlineLine3Accent: ["THE", "BUILT", "ENVIRONMENT"],
     heroCopy:
       "We help clients define direction, curate the right expertise, and align decisions from initial vision to final realization.",
     stat1: "Countries of experience",
@@ -104,12 +109,12 @@ const STRINGS: Record<Locale, Dict> = {
     platformAccent: "curator",
     platformPost: " and mentor for multidisciplinary development.",
     platformBody:
-      "Projects rarely fail for lack of design; they lose value when decisions drift apart. ROST PLATFORM sits at the core of the project's value chain — connecting the client's team, our specialist departments, and an expansive network of experts — so strategic coherence survives and the asset's long-term worth is protected.",
+      "Projects rarely fail for lack of design; they lose value when decisions drift apart. ROST PLATFORM sits at the core of the project — connecting the client's team, our specialist departments, and an expansive network of experts — so strategic coherence survives and the asset's long-term worth is protected.",
     platformEtym:
       "«Rost» — an authentic Persian word evoking growth, development, flourishing.",
     roleTitle: "Strategic Design Advisor",
     roleFramework:
-      "Aligned with the RIBA Plan of Work 2020 — the international RIBA Client Adviser framework.",
+      "Aligned with the RIBA Plan of Work 2020 and the RIBA Client Adviser role.",
     roleStatement:
       "For building projects, from initial vision through to post-construction, we operate at the strategic decision-making level to safeguard the project\u2019s coherence and align it with investment objectives.",
     stages: [
@@ -133,23 +138,40 @@ const STRINGS: Record<Locale, Dict> = {
       "Strengthen pricing power and brand credibility over time.",
     ],
     departmentsIntro:
-      "A branded house cultivating a dynamic value chain of specialist businesses.",
+      "One parent brand — complementary specialist departments",
     plateNameA: "Rost Lighting",
     plateNameB: "Rost Trip",
-    plateDescA: "Architectural lighting design.",
-    plateDescB: "Specialist architectural travel and experience programs.",
+    capabilitiesA: [
+      "Design & Consultation — concepts that carry the project's identity",
+      "Calculations & Engineering — buildable, standard-compliant, sustainable",
+      "Equipment Design & Supply — specified for the project, not the catalogue",
+      "Light Art & Education — events, installations, and training programs",
+    ],
+    capabilitiesB: [
+      "Custom Trip — end-to-end planning and full delivery, built around you",
+      "Signature Trips — pre-designed journeys in small, focused groups",
+      "Itinerary Design — a precise, professional plan, without our operations",
+      "Research & Access — trusted sources, field insight, local connections",
+    ],
+    complementA:
+      "Light as a foundational discipline of architecture — shaping how space, atmosphere, and identity are perceived, through international experience, precise technical knowledge, and an interdisciplinary approach.",
+    complementB:
+      "Deep insight into global architecture cannot come from print — it is lived. ROST TRIP is the strategic answer: experiential, specialized journeys that transfer firsthand understanding to decision-makers, professionals, and leading architects.",
     plateTagA: "Light, the narrative of architecture.",
     plateTagB: "Travel & Experience.",
+    captionA: "Armitaj Residential Tower — Mashhad",
+    captionB: "Kyoto Study Program — Japan, 2023",
     networkHeading: "Global network",
+    networkIntro: "Offices, partners, and specialists — one network behind the role.",
     networkCountries: ["Iran", "UK", "UAE", "China", "Brazil"],
-    networkRoles: ["Headquarter", "Office", "Office", "Partner", "Partner"],
+    networkRoles: ["Headquarters", "Office", "Office", "Partner", "Partner"],
   },
   FA: {
     dir: "rtl",
     headlineLine1: "پلتفرمی چندرشته‌ای",
     headlineLine2: "برای راهبری توسعه در",
     headlineLine3Plain: "",
-    headlineLine3Accent: ["معماری", "و", "ساخت."],
+    headlineLine3Accent: ["معماری", "و", "ساخت"],
     heroCopy:
       "ما به کارفرمایان کمک می‌کنیم جهت‌گیری را تعریف کنند، تخصص درست را کیوریت کنند، و تصمیمات را از چشم‌انداز اولیه تا تحقق نهایی هم‌راستا کنند.",
     stat1: "کشور تجربه",
@@ -165,12 +187,12 @@ const STRINGS: Record<Locale, Dict> = {
     platformAccent: "کیوریتور",
     platformPost: " و منتور توسعه چندرشته‌ای",
     platformBody:
-      "پروژه‌ها به‌ندرت از کمبود طراحی شکست می‌خورند؛ آن‌ها وقتی ارزش می‌بازند که تصمیم‌ها واگر می‌شوند. رست پلتفرم در هسته زنجیره ارزش پروژه قرار دارد — تیم کارفرما، دپارتمان‌های تخصصی و شبکه گسترده متخصصان را به هم پیوند می‌دهد — تا انسجام راهبردی از دست نرود و ارزش بلندمدت دارایی محفوظ بماند.",
+      "پروژه‌ها به‌ندرت از کمبود طراحی شکست می‌خورند؛ آن‌ها وقتی ارزش می‌بازند که تصمیم‌ها واگر می‌شوند. رست پلتفرم در هسته پروژه قرار دارد — تیم کارفرما، دپارتمان‌های تخصصی و شبکه گسترده متخصصان را به هم پیوند می‌دهد — تا انسجام راهبردی از دست نرود و ارزش بلندمدت دارایی محفوظ بماند.",
     platformEtym:
       "«رست» واژه‌ای اصیل فارسی است که مفاهیم رشد، توسعه و شکوفایی را تداعی می‌کند.",
     roleTitle: "مشاور استراتژیک طرح",
     roleFramework:
-      "هم‌راستا با چارچوب RIBA Plan of Work 2020 و نقش بین‌المللی RIBA Client Adviser.",
+      "هم‌راستا با RIBA Plan of Work 2020 و نقش RIBA Client Adviser.",
     roleStatement:
       "نماینده منافع راهبردی پروژه؛ از شکل‌گیری چشم‌انداز اولیه تا پس از تکمیل ساخت، در سطح تصمیم‌گیری کلان فعالیت می‌کند تا با حفظ انسجام طرح و هم‌راستایی آن با اهداف سرمایه‌گذاری، از کیفیت کلان پروژه محافظت کند.",
     stages: [
@@ -194,18 +216,56 @@ const STRINGS: Record<Locale, Dict> = {
       "تقویت قیمت‌گذاری و اعتبار برند در بلندمدت.",
     ],
     departmentsIntro:
-      "برند مادر؛ پرورش زنجیره ارزشی پویا از کسب‌وکارهای تخصصی.",
+      "یک برند مادر — دپارتمان‌های تخصصی مکمل",
     plateNameA: "رست لایتینگ",
     plateNameB: "رست تریپ",
-    plateDescA: "طراحی نورپردازی معمارانه.",
-    plateDescB: "برنامه‌های سفر تخصصی معماری و تجربه.",
+    capabilitiesA: [
+      "طراحی و مشاوره نور — کانسپت‌هایی که هویت پروژه را حمل می‌کنند",
+      "محاسبات و مهندسی روشنایی — قابل ساخت، منطبق با استاندارد، پایدار",
+      "طراحی و تأمین تجهیزات — انتخاب برای پروژه، نه کاتالوگ",
+      "لایت‌آرت و آموزش — رویدادها، اینستالیشن و برنامه‌های آموزشی",
+    ],
+    capabilitiesB: [
+      "سفر سفارشی — برنامه‌ریزی و اجرای صفر تا صد، بر پایه نیاز شما",
+      "سفرهای اختصاصی — سفرهای از پیش طراحی‌شده در گروه‌های محدود",
+      "مشاوره و طراحی مسیر — برنامه‌ای دقیق و حرفه‌ای، بدون نیاز به حضور ما",
+      "تحقیق و دسترسی — منابع معتبر، تجربه میدانی، ارتباطات محلی",
+    ],
+    complementA:
+      "نور نه ابزار روشنایی، بلکه دیسیپلینی بنیادین در معماری است — عنصری که کیفیت ادراک فضا، اتمسفر و هویت بنا را شکل می‌دهد؛ حاصل تجربه بین‌المللی، دانش فنی دقیق و نگرش میان‌رشته‌ای.",
+    complementB:
+      "بینش عمیق از معماری جهانی بدون تجربه زیسته ممکن نیست — رست تریپ پاسخی استراتژیک به این نیاز است: سفرهای تجربه‌گرایانه و تخصصی برای مدیران، متخصصان و معماران برجسته.",
     plateTagA: "نور، روایت معماری.",
     plateTagB: "سفر و تجربه.",
+    captionA: "برج مسکونی ارمیتاژ — مشهد",
+    captionB: "برنامه مطالعاتی کیوتو — ژاپن، ۲۰۲۳",
     networkHeading: "شبکه جهانی",
+    networkIntro: "دفاتر، پارتنرها و متخصصان — یک شبکه در خدمت این نقش.",
     networkCountries: ["ایران", "انگلستان", "امارات", "چین", "برزیل"],
-    networkRoles: ["دفتر مرکزی", "دفتر", "دفتر", "همکار", "همکار"],
+    networkRoles: ["دفتر مرکزی", "دفتر", "دفتر", "پارتنر", "پارتنر"],
   },
 };
+
+/* FA optical fit: Yekan Bakh's Latin glyphs read larger than its Persian
+   script at the same point size, so Latin runs inside a Persian line are
+   set at 75% (empirically matched against the Persian letter band —
+   confirmed visually at 0.7/0.75/0.8/1.0; see item-3 refinement notes).
+   EN rendering is all-Latin and passes through untouched. Latin runs keep
+   dir="ltr" per the drafting convention (numerals and codes stay Latin). */
+function fitFaLatin(text: string): ReactNode {
+  return text
+    .split(/([A-Za-z0-9][A-Za-z0-9 .]*[A-Za-z0-9])/g)
+    .map((part, i) =>
+      /[A-Za-z0-9]/.test(part) ? (
+        <span key={i} dir="ltr" className="inline-block text-[0.75em] leading-[1.1]">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+}
+
 /* ----------------------------- animations ---------------------------------- */
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -348,21 +408,32 @@ function useHasMounted() {
  * One RIBA stage row (section 02) with two independent motion layers.
  *
  * Layer 1: the staggered reveal() rise, unchanged from the approved
- * composition. Layer 2: single-focus activation -- the parent StageList
- * computes which row's rect center sits nearest the viewport center and
- * passes it down as `active`, so exactly one row is ever lit: its numeral
- * takes full ROST BLUE, the title brightens to full white and lifts 3px
- * (translate only, never a layout property) and its description reaches
- * full opacity while quiet neighbours hold at 0.35. Descriptions are
- * always in the DOM and always in flow, so nothing shifts and SEO/a11y
- * content never disappears.
+ * composition. Layer 2: single-focus activation -- by default the parent
+ * StageList lights the highest row whose top edge has crossed a reading
+ * line at 44% of the viewport height, passing it down as `active`, so
+ * exactly one row is ever lit: its numeral takes full ROST BLUE, the
+ * title brightens to full white and lifts 3px (translate only, never a
+ * layout property) and its description reaches full opacity while quiet
+ * neighbours recess to a clearly subordinate 0.2 / white-60. Hover stays
+ * an affordance only: a hovered quiet title tops out at white-90 without
+ * lift, so it can never out-weigh the active row. Descriptions are always
+ * in the DOM and always in flow, so nothing shifts and SEO/a11y content
+ * never disappears.
+ *
+ * Click-to-activate: a stretched transparent button (last child, covering
+ * the row) calls onActivate(index), letting a reader pin any visible stage
+ * without scrolling; the parent releases the pin when the scroll-derived
+ * crossing reaches or passes it, when the row leaves the viewport, or when
+ * the stack leaves view. aria-current="step" marks the lit row for AT.
  *
  * Reduced-motion invariant (the reveal() guard): the activation result is
- * hard-gated off under reduce -- no activation behavior at all -- and the
- * class values collapse to the approved static look: Stage 0 numeral
- * blue, every description at full opacity, no lift. The rendered prop
- * SHAPE is identical in both modes, so a late flip of useReducedMotion()
- * can never strand a row dimmed or lifted out of view.
+ * hard-gated off under reduce -- no activation or pinning behavior at all
+ * -- and the class values collapse to the approved static look: Stage 0
+ * numeral blue, every description at full opacity, no lift. The overlay
+ * button is still rendered (prop-shape discipline) but unfocusable and
+ * aria-hidden, so it is silent. The rendered prop SHAPE is identical in
+ * both modes, so a late flip of useReducedMotion() can never strand a row
+ * dimmed or lifted out of view.
  */
 function StageRow({
   index,
@@ -371,6 +442,7 @@ function StageRow({
   rtl,
   reduce,
   active,
+  onActivate,
 }: {
   index: number;
   name: string;
@@ -378,6 +450,7 @@ function StageRow({
   rtl: boolean;
   reduce: boolean;
   active: boolean;
+  onActivate: (index: number) => void;
 }) {
   /* Hydration guard (React 19 does not patch up attribute mismatches):
      `reduce` arriving from Home is already mount-gated by useHasMounted(),
@@ -393,24 +466,25 @@ function StageRow({
     <li>
       <motion.div
         {...reveal(reduce, index, 0.12)}
-        className="group grid grid-cols-[3.5rem_1fr] items-baseline gap-x-6 border-b border-rost-line py-6 last:border-b-0 md:grid-cols-[8.5rem_1fr] md:gap-x-10 md:py-8"
+        aria-current={lit ? "step" : undefined}
+        className="group relative grid cursor-pointer grid-cols-[3.5rem_1fr] items-baseline gap-x-6 border-b border-rost-line py-6 last:border-b-0 md:grid-cols-[8.5rem_1fr] md:gap-x-10 md:py-8"
       >
         <span
           dir="ltr"
           className={`font-display text-5xl leading-[0.85] font-semibold tracking-tight transition-colors duration-[450ms] md:text-7xl ${
             numeralBlue
               ? "text-rost-blue"
-              : "text-rost-white/18 group-hover:text-rost-white/45"
+              : "text-rost-white/12 group-hover:text-rost-white/45"
           }`}
         >
           {index}
         </span>
         <div className="min-w-0">
           <span
-            className={`block transition-[transform,translate,color] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rost-white ${
+            className={`block transition-[transform,translate,color] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
               lit
                 ? "-translate-y-[3px] text-rost-white"
-                : "translate-y-0 text-rost-white/85"
+                : "translate-y-0 text-rost-white/60 group-hover:text-rost-white/90"
             } ${
               rtl
                 ? "text-lg leading-[1.7] font-medium md:text-[1.7rem] md:leading-[1.55]"
@@ -420,32 +494,62 @@ function StageRow({
             {name}
           </span>
           <p
-            className={`mt-1.5 text-rost-gray transition-opacity duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            className={`mt-1.5 text-rost-annotation transition-opacity duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
               rtl
                 ? "text-[14px] leading-[1.9] md:text-[15px]"
                 : "text-sm max-w-[52ch]"
-            } ${lit || staticLook ? "opacity-100" : "opacity-[0.35]"}`}
+            } ${lit || staticLook ? "opacity-100" : "opacity-[0.2]"}`}
           >
             {desc}
           </p>
         </div>
+        {/* Stretched transparent overlay: the whole row is the tap/click
+            target. focus-visible:outline-none is deliberately absent so the
+            site-wide blue button ring (globals.css base layer) draws around
+            the row; the global :focus-visible reset is not enough because a
+            utility-layer outline-none would override it. */}
+        <button
+          type="button"
+          aria-label={`${index} — ${name}`}
+          onClick={() => onActivate(index)}
+          tabIndex={reduce ? -1 : 0}
+          aria-hidden={reduce || undefined}
+          className="absolute inset-0 cursor-pointer rounded-none"
+        />
       </motion.div>
     </li>
   );
 }
 
+/* The reading line, as a fraction of viewport height, whose crossing lights
+   a stage row: slightly above the middle so a row activates exactly when
+   its title arrives in the reading zone, not when its rect center passes. */
+const STAGE_READING_LINE_RATIO = 0.44;
+
 /**
  * The RIBA stage stack (section 02) with single-focus activation.
  *
- * One scroll-linked state replaces the per-row center-band observers: on
- * each rAF-throttled frame after a scroll or resize, the row whose rect
- * center sits nearest the viewport center becomes the active index, so
- * exactly one row is ever lit -- on desktop, and on mobile where rows are
- * shorter than the old ±42% band and several lit at once. The whole
- * computation is gated on the list container intersecting the viewport
- * (one useInView with a -10% edge margin), so rows stay quiet until the
- * stack actually scrolls in and revert when it has fully passed, and it
- * is skipped under reduced-motion, where the approved static look holds.
+ * Crossing-trigger governs by default: on each rAF-throttled frame after a
+ * scroll or resize, the active index is the HIGHEST row whose top edge has
+ * crossed a reading line positioned at 44% of the viewport height. Rows are
+ * contiguous and ordered, so that index is a pure function of scroll
+ * position: a row lights exactly as its title reaches the reading line,
+ * stopping between stages keeps the last crossed row lit, backward scroll
+ * unwinds one crossing at a time, and no position can oscillate between two
+ * winners. Before the first row crosses the line, activeIndex stays -1 and
+ * every row holds the quiet state -- the honest "not arrived yet" reading
+ * of the stack.
+ *
+ * A click pins the displayed stage without scrolling (activate): the pin
+ * keeps that row lit while the scroll-derived index stays below it, and
+ * releases silently when the crossing reaches or passes the pinned index,
+ * when the pinned row is fully outside the viewport, or when the stack
+ * leaves view (the whole computation is gated on the list container
+ * intersecting the viewport -- one useInView with a -10% edge margin -- so
+ * rows stay quiet until the stack actually scrolls in and revert when it
+ * has fully passed). The pin lives in a ref mirrored by state so compute()
+ * never reads state inside an updater. Reduced motion: no crossing, no
+ * pinning, static look.
  */
 function StageList({
   names,
@@ -464,6 +568,27 @@ function StageList({
     margin: "-10% 0px -10% 0px",
   });
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [pinnedIndex, setPinnedIndex] = useState<number | null>(null);
+  const pinnedRef = useRef<number | null>(null);
+
+  /* A click pins the displayed stage exactly as if the scroll had reached
+     it -- no scroll movement, no scrollIntoView. Gated off under reduce,
+     where the static look holds and no activation exists. */
+  const activate = (i: number) => {
+    if (reduce) return;
+    pinnedRef.current = i;
+    setPinnedIndex(i);
+    setActiveIndex(i);
+  };
+
+  /* Leaving view clears a stale pin so a re-entry resumes pure
+     crossing-driven behavior. */
+  useEffect(() => {
+    if (!inView && (pinnedIndex !== null || pinnedRef.current !== null)) {
+      pinnedRef.current = null;
+      setPinnedIndex(null);
+    }
+  }, [inView, pinnedIndex]);
 
   useEffect(() => {
     if (!inView || reduce) return;
@@ -472,18 +597,34 @@ function StageList({
       raf = 0;
       const list = listRef.current;
       if (!list) return;
-      const mid = window.innerHeight / 2;
-      let nearest = -1;
-      let nearestDist = Number.POSITIVE_INFINITY;
+      const readingLine = window.innerHeight * STAGE_READING_LINE_RATIO;
+      /* Rows are contiguous and ordered, so every row above the deepest
+         crossed one has crossed too: scanning top-to-bottom and keeping
+         the last row whose top edge sits at or above the reading line
+         yields the highest crossed index -- a pure function of scroll
+         position, so any given position maps to exactly one state and
+         activation cannot flicker. -1 means nothing has arrived yet. */
+      let crossed = -1;
       Array.from(list.children).forEach((row, i) => {
-        const rect = row.getBoundingClientRect();
-        const dist = Math.abs(rect.top + rect.height / 2 - mid);
-        if (dist < nearestDist) {
-          nearestDist = dist;
-          nearest = i;
-        }
+        if (row.getBoundingClientRect().top <= readingLine) crossed = i;
       });
-      setActiveIndex((prev) => (prev === nearest ? prev : nearest));
+      let displayed = crossed;
+      if (pinnedRef.current !== null) {
+        const pinned = pinnedRef.current;
+        const row = list.children[pinned] as HTMLElement | undefined;
+        const rect = row?.getBoundingClientRect();
+        const outOfView =
+          !rect || rect.bottom < 0 || rect.top > window.innerHeight;
+        if (crossed >= pinned || outOfView) {
+          /* Scroll caught up with or passed the pin, or the pinned row is
+             gone: release and let the crossing drive again. */
+          pinnedRef.current = null;
+          setPinnedIndex(null);
+        } else {
+          displayed = pinned;
+        }
+      }
+      setActiveIndex((prev) => (prev === displayed ? prev : displayed));
     };
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(compute);
@@ -512,9 +653,174 @@ function StageList({
           rtl={rtl}
           reduce={reduce}
           active={inView && i === activeIndex}
+          onActivate={activate}
         />
       ))}
     </ol>
+  );
+}
+
+/* --------------------------- 04 · network map ------------------------------ */
+
+/**
+ * The handmade world map as section 04's central visual, with one drafting
+ * annotation per verified location.
+ *
+ * Markers are percent-positioned on the image box (calibrated against the
+ * supplied 1104x640 geometry -- no JS measurement): a small ROST BLUE dot
+ * with a thin white/70 ring, a hairline leader, and an always-visible
+ * uppercase label (white country over annotation-gray role). Leader
+ * directions are distributed per marker (up-left / up / up-right /
+ * down-right) so the IRAN, UAE and CHINA labels cannot collide at either
+ * tested viewport.
+ *
+ * The whole map block is forced dir="ltr": geography never mirrors, while
+ * each label text keeps its natural script via dir="auto" (Persian names in
+ * FA stay Persian on the Latin-oriented container). The image is decorative
+ * (alt=""): the sr-only section heading plus the five marker buttons carry
+ * the content; every marker is a focusable button with a localized
+ * "<country> — <role>" aria-label and a 24px hit area.
+ *
+ * Emphasis is one shared active-index state driven identically by hover and
+ * keyboard focus (pointerenter/focus set, pointerleave/blur clear -- with
+ * pointer-type gating so Chromium's synthetic post-tap mouseleave cannot
+ * wipe a touch selection; click or tap sets, a click on the map background
+ * clears), so no information is hover-only: the active dot scales 1.35 and
+ * its role line goes full white while the others recess to 60% opacity.
+ * Under reduced motion the same state and the same prop shape hold -- only
+ * the transition duration collapses to zero, so the resting look is
+ * identical to the static look.
+ */
+const NETWORK_MARKERS = [
+  { x: 65.0, y: 34.0, place: "up-right" }, // Iran — Headquarters
+  { x: 43.5, y: 22.5, place: "up-left" }, // UK — Office (central England; the previous London-precise dot read as northern France at map scale)
+  { x: 63.5, y: 42.5, place: "up-left" }, // UAE — Office (label offset left of its riser)
+  { x: 80.5, y: 39.0, place: "down-right" }, // China — Partner (east coast; below: up-right would collide with Iran's label at 390px)
+  { x: 30.0, y: 68.0, place: "up" }, // Brazil — Partner
+] as const;
+
+/* Stack anchor + flex order; the leader sits nearest the dot in every
+   direction (flex-col puts it last above, flex-col-reverse first below).
+   align mirrors the stack edge so the two label lines stack flush the same
+   side as their riser. */
+const MARKER_STACK: Record<
+  (typeof NETWORK_MARKERS)[number]["place"],
+  { stack: string; align: string }
+> = {
+  up: {
+    stack: "bottom-[calc(50%+7px)] left-1/2 -translate-x-1/2 flex-col items-center",
+    align: "items-center",
+  },
+  "up-right": {
+    stack: "bottom-[calc(50%+7px)] left-[7px] flex-col items-start",
+    align: "items-start",
+  },
+  "up-left": {
+    stack: "bottom-[calc(50%+7px)] right-[7px] flex-col items-end",
+    align: "items-end",
+  },
+  "down-right": {
+    stack: "top-[calc(50%+7px)] left-[7px] flex-col-reverse items-start",
+    align: "items-start",
+  },
+};
+
+function NetworkMap({
+  countries,
+  roles,
+  rtl,
+  reduce,
+}: {
+  countries: string[];
+  roles: string[];
+  rtl: boolean;
+  reduce: boolean;
+}) {
+  const [active, setActive] = useState<number | null>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const ease = reduce ? "duration-0" : "duration-300";
+  return (
+    <div
+      ref={mapRef}
+      dir="ltr"
+      className="relative mt-12 md:mt-16"
+      onClick={(e) => {
+        if (!(e.target as HTMLElement).closest("button")) setActive(null);
+      }}
+    >
+      <Image
+        src="/network/world-map.png"
+        alt=""
+        width={1104}
+        height={640}
+        sizes="(min-width: 1280px) 1216px, (min-width: 1024px) 760px, (min-width: 768px) 528px, calc(100vw - 40px)"
+        className="h-auto w-full opacity-90"
+      />
+      {NETWORK_MARKERS.map((m, i) => {
+        const isActive = active === i;
+        const dimmed = active !== null && !isActive;
+        const place = MARKER_STACK[m.place];
+        return (
+          <div
+            key={`marker-${countries[i]}`}
+            className="absolute"
+            style={{ left: `${m.x}%`, top: `${m.y}%` }}
+          >
+            <div
+              aria-hidden
+              className={`pointer-events-none absolute flex flex-col gap-1.5 transition-opacity ${ease} ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                dimmed ? "opacity-60" : "opacity-100"
+              } ${place.stack}`}
+            >
+              <span className={`flex flex-col gap-0.5 ${place.align}`}>
+                <span
+                  dir="auto"
+                  className={`rost-track text-[10px] uppercase leading-[1.35] text-rost-white ${rtl ? "font-bold" : "font-semibold"}`}
+                >
+                  {countries[i]}
+                </span>
+                <span
+                  dir="auto"
+                  className={`rost-track text-[10px] uppercase leading-[1.35] transition-colors ${ease} ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isActive ? "text-rost-white" : "text-rost-annotation"
+                  } ${rtl ? "font-medium" : ""}`}
+                >
+                  {roles[i]}
+                </span>
+              </span>
+              <span className="h-7 w-px bg-rost-white/70" />
+            </div>
+            <button
+              type="button"
+              aria-label={`${countries[i]} — ${roles[i]}`}
+              onPointerEnter={(e) => {
+                if (e.pointerType === "mouse") setActive(i);
+              }}
+              onPointerLeave={(e) => {
+                if (e.pointerType !== "mouse") return;
+                // Keyboard focus keeps precedence over a departing hover:
+                // restore emphasis to the focused marker, if any.
+                const focused = Array.from(
+                  mapRef.current?.querySelectorAll("button") ?? [],
+                ).findIndex((button) => button === document.activeElement);
+                setActive(focused >= 0 ? focused : null);
+              }}
+              onFocus={() => setActive(i)}
+              onBlur={() => setActive(null)}
+              onClick={() => setActive(i)}
+              className={`absolute left-1/2 top-1/2 flex h-6 w-6 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full transition-[scale,opacity] ${ease} ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                isActive ? "scale-[1.35]" : "scale-100"
+              } ${dimmed ? "opacity-60" : "opacity-100"}`}
+            >
+              <span
+                aria-hidden
+                className="h-[9px] w-[9px] rounded-full bg-rost-blue ring-1 ring-rost-white/70"
+              />
+            </button>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -586,6 +892,62 @@ function DocSection({
     </section>
   );
 }
+
+/* --------------------------- capability list --------------------------------
+ * One plate's four capability rows: hairline-ruled ledger entries (border-b on
+ * every row, border-t on the first). On md+ the list stretches to the paired
+ * image's height and the four rows become equal bands (flex-1 with the
+ * baseline numeral+text pair vertically centered inside each band), so the
+ * first and last hairlines sit exactly on the image's top and bottom edges
+ * and the two columns read as one integrated plate; on mobile the list stays
+ * normal flow with py-5 rows. Index numerals carry ps clearance from the row
+ * rule, stay Latin dir=ltr in EN, and render as Persian digits (۰۱–۰۴) in FA.
+ * Rows are PLAIN DIVS — nothing here is a link, so the
+ * list adds no tab stops; the progressive disclosure is hover-only
+ * (focus-visible can never match a non-focusable div). The hover emphasis is
+ * color/border only — never a lift — and under reduce the CSS transitions
+ * collapse to duration 0 (the class SHAPE stays identical: SSR and the first
+ * client render both see the non-reduce branch via useHasMounted gating).
+ */
+
+function CapabilityList({
+  items,
+  rtl,
+  reduce,
+}: {
+  items: string[];
+  rtl: boolean;
+  reduce: boolean;
+}) {
+  const ease = reduce ? "duration-0" : "duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]";
+  const faNumerals = ["۰۱", "۰۲", "۰۳", "۰۴"];
+  return (
+    <div className="md:flex md:h-full md:flex-col">
+      {items.map((cap, i) => (
+        <motion.div
+          key={cap}
+          {...reveal(reduce, i, 0)}
+          className={`group flex border-b border-s-2 border-s-transparent py-5 transition-colors ${ease} hover:border-s-rost-blue md:flex-1 md:items-center md:py-0 ${i === 0 ? "border-t" : ""}`}
+        >
+          <div className="flex items-baseline gap-4">
+            <span
+              dir={rtl ? undefined : "ltr"}
+              className={`shrink-0 ps-1 font-display text-xs tracking-widest text-rost-blue/80 transition-colors md:ps-2 ${ease} group-hover:text-rost-blue`}
+            >
+              {rtl ? faNumerals[i] : String(i + 1).padStart(2, "0")}
+            </span>
+            <p
+              className={`text-[15px] text-rost-white/90 transition-colors ${ease} md:text-base ${rtl ? "leading-[1.9]" : "leading-relaxed"} group-hover:text-rost-white`}
+            >
+              {cap}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 /* ----------------------------- axonometric engine -------------------------- */
 
 type AxonPoint = readonly [x: number, y: number, z: number];
@@ -767,6 +1129,16 @@ function BlueprintBackdrop({
     y: 2.15 + index * 0.31,
     z: 2.38 + index * 0.17,
   }));
+
+  /* Stage ladder ticks sit on each layer's base plane, in group space
+     (projected coordinates on the x=8.12 registration axis). */
+  const stageLadder = [
+    { y: 696, label: "0–1" }, // site & brief — Strategic Definition, Preparation
+    { y: 646, label: "2–3" }, // structure — Concept, Spatial Coordination
+    { y: 493, label: "4" }, // spatial volumes — Technical Design
+    { y: 356, label: "5" }, // envelope — Construction
+    { y: 215, label: "6–7" }, // roof & light — Handover, Use
+  ];
 
   const drawProject = (compact: boolean) => (
     <>
@@ -1054,6 +1426,29 @@ function BlueprintBackdrop({
               dash="2 7"
             />
             <AxonRegistration point={[7.72, 0.08, 5.78]} offsetY={-236} />
+
+            {/* Stage ladder: the five exploded planes map remotely to the RIBA
+                Plan of Work stages 0-7 along the registration axis - a silent
+                drafting annotation on the sheet, not a process diagram.
+                direction ltr keeps SVG text anchoring stable when the FA
+                toggle flips the hero wrapper to RTL (Latin stage codes never
+                mirror; font stays the inherited sheet stack). */}
+            <g style={{ direction: "ltr" }} fill="none">
+              {/* Rail, broken at y=571: one quiet drafting join, no more. */}
+              <line x1={1507} y1={700} x2={1507} y2={576} stroke="rgba(255,255,255,0.14)" strokeWidth={0.8} />
+              <line x1={1507} y1={566} x2={1507} y2={210} stroke="rgba(255,255,255,0.14)" strokeWidth={0.8} />
+              {stageLadder.map(({ y, label }) => (
+                <g key={label}>
+                  <line x1={1499} y1={y} x2={1515} y2={y} stroke="rgba(28,128,187,0.5)" strokeWidth={1} />
+                  <text x={1525} y={y + 3.5} fontSize={10.5} letterSpacing="0.18em" fill="rgba(255,255,255,0.42)">
+                    {label}
+                  </text>
+                </g>
+              ))}
+              <text x={1509} y={726} fontSize={9} letterSpacing="0.24em" fill="rgba(255,255,255,0.28)">
+                RIBA PLAN OF WORK
+              </text>
+            </g>
           </g>
         )}
       </motion.g>
@@ -1108,6 +1503,30 @@ function BrandMark() {
     </a>
   );
 }
+
+/* ----------------------------- RIBA logotype ---------------------------------
+   RIBA logotype (public/riba/riba-logotype-white.svg) inlined as a decorative
+   mark: next/image is bypassed because SVG optimization is blocked in dev, and
+   the mark itself carries no unique reading — the adjacent caption does. The
+   caption beside it credits the FOUNDER'S INDIVIDUAL credentials (CP-2026-006/
+   007); nothing here must read as ROST PLATFORM itself being RIBA-certified. */
+
+function RibaLogotype() {
+  return (
+    <svg
+      viewBox="0 0 201 80"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+      className="h-7 w-auto shrink-0"
+    >
+      <path
+        fill="#FFFFFF"
+        d="M0.163086 50.0342L19.4492 80.0391H0.163086V50.0342ZM8.41736 12.7921H0.163086V35.3642H8.41736C13.19 35.3642 16.476 34.1515 18.5103 31.9999C20.388 30.0048 21.4834 27.1882 21.4834 24.0586C21.4834 20.929 20.388 18.1124 18.5103 16.1173C16.476 13.9657 13.19 12.7921 8.41736 12.7921ZM189.425 49.2909L178.628 20.2249L167.439 49.2909H189.425ZM117.17 28.8312C118.735 27.1491 119.713 24.7628 119.713 22.1809C119.713 19.599 118.774 17.2127 117.17 15.5305C115.488 13.731 112.828 12.753 109.464 12.753H101.21V31.5696H109.464C112.828 31.5696 115.488 30.5916 117.17 28.7921V28.8312ZM40.4956 22.7677C40.4956 35.4816 33.6105 44.5183 21.7181 47.8043L43.1558 80.0782H49.9626V0.0390625H26.0995C34.3929 4.02928 40.5347 11.8532 40.5347 22.7677H40.4956ZM127.498 0.0390625C134.227 3.63808 138.686 10.132 138.686 18.6992C138.686 27.2664 134.618 33.8777 129.024 36.6161C136.378 39.2762 142.833 45.9266 143.85 57.0366L167.948 0.0390625H127.498ZM68.9357 80.0391H82.1973V0.0390625H68.9357V80.0391ZM195.019 64.2738H161.689L155.625 80.0391H200.848L195.019 64.2738ZM112.202 46.1613H101.21V67.3251H112.202C116.466 67.3251 119.244 66.308 121.122 64.352C122.96 62.4351 124.016 59.6576 124.016 56.7237C124.016 53.7897 122.96 51.0122 121.122 49.0953C119.283 47.1784 116.505 46.1222 112.202 46.1222V46.1613Z"
+      />
+    </svg>
+  );
+}
+
 /* ----------------------------- main page ----------------------------------- */
 
 export default function Home() {
@@ -1171,17 +1590,21 @@ export default function Home() {
           For building projects, from initial vision through to post-construction,
           we operate at the strategic decision-making level to safeguard the
           project&apos;s coherence and align it with investment objectives. The
-          role spans the seven RIBA Plan of Work 2020 stages: Stage 0 Strategic
+          role spans the eight RIBA Plan of Work 2020 stages: Stage 0 Strategic
           Definition, Stage 1 Preparation and Briefing, Stage 2 Concept Design,
           Stage 3 Spatial Coordination, Stage 4 Technical Design, Stage 5
           Manufacturing and Construction, Stage 6 Handover, and Stage 7 Use.
         </p>
-        <h2>Departments — Branded House</h2>
+        <h2>Departments — One Parent Brand</h2>
         <p>
-          Alongside our core consultancy, ROST PLATFORM operates as a branded
-          house cultivating a dynamic value chain of specialist businesses:
+          ROST PLATFORM is one parent brand with complementary specialist
+          departments:
           ROST LIGHTING (architectural lighting design) and ROST TRIP
           (specialist architectural travel and experience programs).
+          ROST LIGHTING delivers architectural lighting design for facades,
+          interiors, and the public realm with product-neutral specification.
+          ROST TRIP curates architectural journeys through cities and landmark
+          projects, with access beyond the public route.
         </p>
         <h2>Global presence</h2>
         <p>
@@ -1205,9 +1628,8 @@ export default function Home() {
           office: ROST PLATFORM LTD, Unit 13 Warham Rd, London, England. Phone:{" "}
           <a href="tel:+447386296171">+44 73 86 296 171</a>. Mashhad office:
           Unit 1, No-23, 2nd Kamal-ol-molk, Mashhad, Iran. Tehran office: Unit
-          309, Queen Center, Fereshteh St, Tehran, Iran. Website:{" "}
-          <a href="https://www.rostplatform.com">www.rostplatform.com</a>. Social
-          media: @rostplatform.
+          309, Queen Center, Fereshteh St, Tehran, Iran. Social
+          media: @rost.platform.
         </p>
       </section>
 
@@ -1257,7 +1679,7 @@ export default function Home() {
             href="#role"
             className="hidden items-center gap-1.5 rounded-none bg-rost-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-rost-black transition-all hover:bg-rost-blue hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rost-blue/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rost-black sm:inline-flex"
           >
-            Experience our role
+            Explore the role
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
           </a>
         </motion.div>
@@ -1435,7 +1857,7 @@ export default function Home() {
                 : "font-display text-xl italic md:text-[1.6rem]"
             }`}
           >
-            {t.roleFramework}
+            {rtl ? fitFaLatin(t.roleFramework) : t.roleFramework}
           </motion.p>
 
           <motion.p
@@ -1464,8 +1886,8 @@ export default function Home() {
             id="dept-heading"
             className={`max-w-[52ch] text-rost-white/85 ${
               rtl
-                ? "text-lg font-medium leading-[1.9] md:text-2xl md:leading-[1.8]"
-                : "text-xl font-medium md:text-[1.7rem]"
+                ? "text-xl font-medium leading-[1.9] md:text-[1.65rem] md:leading-[1.8]"
+                : "text-2xl font-medium md:text-[2.1rem]"
             }`}
           >
             {t.departmentsIntro}
@@ -1476,14 +1898,26 @@ export default function Home() {
             {...reveal(reduce, 1, 0)}
             className="mt-14 border-b border-rost-line-strong/40 pb-16 md:mt-20 md:pb-20"
           >
-            <h3
-              className={`text-rost-white ${
-                rtl
-                  ? "text-[clamp(2.1rem,5.6vw,4.6rem)] leading-[1.3] font-black"
-                  : "font-sans text-[clamp(2.5rem,5.9vw,5rem)] leading-[1.02] font-bold uppercase tracking-[0.015em]"
-              }`}
-            >
-              {t.plateNameA}
+            {/* The supplied white wordmark replaces the written name. The
+                localized name survives as sr-only text (screen readers, FA
+                parity); the mark itself is decorative, stays Latin in both
+                locales (brand integrity), and keeps its exact proportions:
+                fixed height + w-auto. The asset is alpha-trimmed so the
+                wordmark sits flush on the start edge (the source PNG carried
+                323px of transparent left padding that offset it from the
+                TRIP mark); max-w-full/object-contain remains as the 390px
+                safety. */}
+            <h3 className="text-rost-white">
+              <span className="sr-only">{t.plateNameA}</span>
+              <Image
+                src="/departments/rost-lighting-white-no-tagline.png"
+                alt=""
+                aria-hidden
+                width={3854}
+                height={399}
+                sizes="(min-width: 1024px) 720px, (min-width: 768px) 640px, 360px"
+                className="h-8 w-auto max-w-full object-contain md:h-14 lg:h-16"
+              />
             </h3>
             {/* The light line — one deliberate nod to the lighting department. */}
             <motion.span
@@ -1498,8 +1932,17 @@ export default function Home() {
               className="mt-6 block h-px w-full origin-left bg-rost-blue/60 rtl:origin-right md:mt-7"
               aria-hidden
             />
+            {/* Plate header row: the complement annotation enters at the
+                start edge with a stat-rule blue tick (it supersedes the old
+                descriptor line — the capabilities carry that job now), the
+                tagline stays flush at the end edge, in both locales. */}
             <div className="mt-6 flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3 md:mt-8">
-              <p className={`text-sm text-rost-gray ${rtl ? "leading-[1.9]" : ""}`}>{t.plateDescA}</p>
+              <div className="max-w-[52ch]">
+                <span className="block h-[2px] w-10 bg-rost-blue" aria-hidden />
+                <p className={`mt-3 text-sm text-rost-gray ${rtl ? "leading-[1.9]" : ""}`}>
+                  {t.complementA}
+                </p>
+              </div>
               <p
                 className={
                   rtl
@@ -1510,27 +1953,77 @@ export default function Home() {
                 {t.plateTagA}
               </p>
             </div>
+
+            {/* Editorial split — image left (7 cols), capability ledger right
+                (5 cols); TRIP mirrors it. Mobile stacks: logo, tagline,
+                image + caption, then capabilities. Explicit dims on the
+                3:2 frame keep the reveal shift free of layout shift. */}
+            <div className="mt-8 grid grid-cols-1 gap-10 md:mt-10 md:grid-cols-12 md:gap-10 lg:gap-16">
+              <motion.figure {...reveal(reduce, 0, 0)} className="md:relative md:col-span-7">
+                <div className="aspect-[3/2] w-full overflow-hidden border border-rost-line-strong/40">
+                  <Image
+                    src="/departments/armitaj-interior.jpg"
+                    alt={t.captionA}
+                    width={2400}
+                    height={1510}
+                    sizes="(min-width: 768px) 760px, 100vw"
+                    className="h-full w-full object-cover saturate-[0.82] contrast-[1.05]"
+                  />
+                </div>
+                {/* Drafting annotation under the frame: index numeral + caption.
+                    Absolute on md+ so the grid row (and the stretched ledger
+                    beside it) measures the image block exactly; the caption
+                    still sits 12px under the frame in both flow modes. */}
+                <figcaption className="mt-3 flex items-baseline gap-3 md:absolute md:top-full">
+                  <span
+                    dir="ltr"
+                    aria-hidden
+                    className="font-display text-xs tracking-widest text-rost-blue/80"
+                  >
+                    01
+                  </span>
+                  <span className={`text-xs text-rost-annotation ${rtl ? "leading-[1.9]" : ""}`}>
+                    {t.captionA}
+                  </span>
+                </figcaption>
+              </motion.figure>
+              <div className="md:col-span-5">
+                <CapabilityList items={t.capabilitiesA} rtl={rtl} reduce={reduce} />
+              </div>
+            </div>
           </motion.div>
 
           {/* Plate B — ROST TRIP */}
           <motion.div {...reveal(reduce, 2, 0)} className="pt-14 md:pt-16">
-            <h3
-              className={`text-rost-white ${
-                rtl
-                  ? "text-[clamp(2.1rem,5.6vw,4.6rem)] leading-[1.3] font-black"
-                  : "font-sans text-[clamp(2.5rem,5.9vw,5rem)] leading-[1.02] font-bold uppercase tracking-[0.015em]"
-              }`}
-            >
-              {t.plateNameB}
+            {/* Same plate anatomy as LIGHTING: sr-only localized name, the
+                Latin wordmark as a decorative companion at the identical
+                cap-height ladder (equal optical parity across both marks). */}
+            <h3 className="text-rost-white">
+              <span className="sr-only">{t.plateNameB}</span>
+              <Image
+                src="/departments/rost-trip-white-no-tagline.png"
+                alt=""
+                aria-hidden
+                width={2340}
+                height={334}
+                sizes="(min-width: 1024px) 720px, (min-width: 768px) 640px, 360px"
+                className="h-8 w-auto max-w-full object-contain md:h-14 lg:h-16"
+              />
             </h3>
             {/* Shared plate anatomy: below the identical title block, the same
                 full-width datum rule geometry as the LIGHTING plate -- there
                 the ROST BLUE light line keeps its draw, here the standard
-                gray hairline -- and the identical row below it: descriptor at
-                the start-edge, tagline flush the end-edge, in both locales. */}
+                gray hairline -- and the identical row below it: complement
+                annotation at the start-edge, tagline flush the end-edge, in
+                both locales. */}
             <span className="mt-6 block h-px w-full bg-rost-line-strong md:mt-7" aria-hidden />
             <div className="mt-6 flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3 md:mt-8">
-              <p className={`text-sm text-rost-gray ${rtl ? "leading-[1.9]" : ""}`}>{t.plateDescB}</p>
+              <div className="max-w-[52ch]">
+                <span className="block h-[2px] w-10 bg-rost-blue" aria-hidden />
+                <p className={`mt-3 text-sm text-rost-gray ${rtl ? "leading-[1.9]" : ""}`}>
+                  {t.complementB}
+                </p>
+              </div>
               <p
                 className={
                   rtl
@@ -1541,6 +2034,40 @@ export default function Home() {
                 {t.plateTagB}
               </p>
             </div>
+
+            {/* Mirrored editorial split — capability ledger left (5 cols),
+                image right (7 cols); the DOM still runs image-then-list so
+                the mobile stack keeps the shared plate order. */}
+            <div className="mt-8 grid grid-cols-1 gap-10 md:mt-10 md:grid-cols-12 md:gap-10 lg:gap-16">
+              <motion.figure {...reveal(reduce, 0, 0)} className="md:relative md:col-start-6 md:col-span-7">
+                <div className="aspect-[3/2] w-full overflow-hidden border border-rost-line-strong/40">
+                  <Image
+                    src="/departments/kyoto-study.jpg"
+                    alt={t.captionB}
+                    width={2400}
+                    height={1350}
+                    sizes="(min-width: 768px) 760px, 100vw"
+                    className="h-full w-full object-cover saturate-[0.82] contrast-[1.05]"
+                  />
+                </div>
+                {/* Drafting annotation under the frame: index numeral + caption */}
+                <figcaption className="mt-3 flex items-baseline gap-3 md:absolute md:top-full">
+                  <span
+                    dir="ltr"
+                    aria-hidden
+                    className="font-display text-xs tracking-widest text-rost-blue/80"
+                  >
+                    02
+                  </span>
+                  <span className={`text-xs text-rost-annotation ${rtl ? "leading-[1.9]" : ""}`}>
+                    {t.captionB}
+                  </span>
+                </figcaption>
+              </motion.figure>
+              <div className="md:col-span-5 md:col-start-1 md:row-start-1">
+                <CapabilityList items={t.capabilitiesB} rtl={rtl} reduce={reduce} />
+              </div>
+            </div>
           </motion.div>
         </DocSection>
 
@@ -1550,14 +2077,35 @@ export default function Home() {
             {t.networkHeading}
           </h2>
 
-          {/* Typographic monuments: the hero stats, repeated at full weight. */}
-          <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:gap-0">
-            <motion.div {...reveal(reduce, 0, 0)} className="md:pe-12 lg:pe-20">
+          {/* The handmade map is the section's central visual: the five
+              verified locations read as drafting annotations on the sheet. */}
+          <motion.div {...reveal(reduce, 0, 0)}>
+            <span className="block h-[2px] w-10 bg-rost-blue" aria-hidden />
+            <p
+              className={`mt-3 max-w-[48ch] text-sm text-rost-annotation md:text-base ${
+                rtl ? "leading-[1.9] font-medium" : ""
+              }`}
+            >
+              {t.networkIntro}
+            </p>
+            <NetworkMap
+              countries={t.networkCountries}
+              roles={t.networkRoles}
+              rtl={rtl}
+              reduce={reduce}
+            />
+          </motion.div>
+
+          {/* Experience figures, relocated below the map at modest scale:
+              countries of experience / years of project record -- never
+              office or partner counts. */}
+          <div className="mt-16 grid grid-cols-2 gap-x-8 border-t border-rost-line-strong/40 pt-8 md:mt-24 md:gap-x-0">
+            <motion.div {...reveal(reduce, 1, 0)} className="md:pe-12 lg:pe-20">
               <p
-                dir="ltr"
-                className={`text-[clamp(5rem,11.5vw,11.5rem)] leading-[0.82] text-rost-white ${
+                className={`inline-block text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.9] text-rost-white ${
                   rtl ? "font-extrabold" : "font-sans font-bold tracking-[-0.02em]"
                 }`}
+                dir="ltr"
               >
                 {t.stat1Number}
               </p>
@@ -1568,14 +2116,14 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              {...reveal(reduce, 1, 0.08)}
+              {...reveal(reduce, 2, 0.08)}
               className="md:border-s md:border-rost-line-strong md:ps-12 lg:ps-20"
             >
               <p
-                dir="ltr"
-                className={`text-[clamp(5rem,11.5vw,11.5rem)] leading-[0.82] text-rost-white ${
+                className={`inline-block text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.9] text-rost-white ${
                   rtl ? "font-extrabold" : "font-sans font-bold tracking-[-0.02em]"
                 }`}
+                dir="ltr"
               >
                 {t.stat2Number}
               </p>
@@ -1585,29 +2133,6 @@ export default function Home() {
               </p>
             </motion.div>
           </div>
-
-          {/* Network index: one typographic line, hairline above and below. */}
-          <motion.ul
-            {...reveal(reduce, 2, 0.05)}
-            className="mt-16 flex list-none flex-wrap items-baseline gap-x-10 gap-y-4 border-y border-rost-line-strong/40 py-6 md:mt-24 md:gap-x-14"
-          >
-            {t.networkCountries.map((country, i) => (
-              <li
-                key={`net-${country}`}
-                className="flex items-baseline gap-x-3 whitespace-nowrap text-[11px] md:text-xs"
-              >
-                <span className={`rost-track uppercase text-rost-white ${rtl ? "font-bold" : "font-semibold"}`}>
-                  {country}
-                </span>
-                <span className="text-rost-blue" aria-hidden>
-                  —
-                </span>
-                <span className={`rost-track uppercase text-rost-annotation ${rtl ? "font-medium" : ""}`}>
-                  {t.networkRoles[i]}
-                </span>
-              </li>
-            ))}
-          </motion.ul>
         </DocSection>
       </div>
 
@@ -1624,7 +2149,7 @@ export default function Home() {
           {/* Office annotations — three columns of small print on the sheet grid */}
           <div className="grid grid-cols-1 gap-x-8 gap-y-7 border-b border-rost-line pb-9 sm:grid-cols-3">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.28em] text-rost-blue/90">London</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] text-rost-gray">London</p>
               <p className="mt-2.5 text-xs leading-relaxed text-rost-gray">
                 Unit 13 Warham Rd
                 <br />
@@ -1649,20 +2174,22 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Legal + registration line */}
-          <div className="mt-7 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-            <address className="flex flex-wrap items-baseline gap-x-6 gap-y-2 text-[11px] not-italic text-rost-gray">
-              <span className="font-display font-medium tracking-[0.18em] text-rost-white">
-                ROST PLATFORM LTD
+          {/* Credential + contact row — the founder's individual RIBA
+              credentials sit at the start edge as the sheet's approval stamp
+              (the company itself claims nothing from them); the reachable
+              contact endpoints sit flush at the end edge. The redundant
+              self-referential website URL and repeated company name are gone:
+              the visitor is already on the site. */}
+          <address className="mt-7 flex flex-col gap-5 border-b border-rost-line pb-4 not-italic md:flex-row md:items-center md:justify-between">
+            <span className="flex items-center gap-4">
+              <RibaLogotype />
+              <span className="border-s border-rost-line ps-4 text-[11px] leading-snug text-rost-annotation">
+                Founder Dr. Taha Fallah
+                <br />
+                Certified RIBA Member
               </span>
-              <a
-                href="https://www.rostplatform.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline-offset-4 transition-colors hover:text-rost-white hover:underline focus-visible:outline-none focus-visible:text-rost-white focus-visible:underline"
-              >
-                www.rostplatform.com
-              </a>
+            </span>
+            <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2 text-[11px] text-rost-gray">
               <a
                 href="mailto:info@rostplatform.com"
                 className="underline-offset-4 transition-colors hover:text-rost-white hover:underline focus-visible:outline-none focus-visible:text-rost-white focus-visible:underline"
@@ -1675,25 +2202,28 @@ export default function Home() {
               >
                 +44 73 86 296 171
               </a>
-            </address>
-            <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2 text-[11px] text-rost-gray">
-              <span>© 2026 ROST PLATFORM LTD · Company No. 16445406</span>
               <a
-                href="https://instagram.com/rostplatform"
+                href="https://instagram.com/rost.platform"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline-offset-4 transition-colors hover:text-rost-white hover:underline focus-visible:outline-none focus-visible:text-rost-white focus-visible:underline"
-                aria-label="ROST PLATFORM on Instagram — @rostplatform"
+                aria-label="ROST PLATFORM on Instagram — @rost.platform"
               >
-                @rostplatform
-              </a>
-              <a
-                href="#platform"
-                className="text-[10px] uppercase tracking-[0.28em] underline-offset-4 transition-colors hover:text-rost-white hover:underline focus-visible:outline-none focus-visible:text-rost-white focus-visible:underline"
-              >
-                Back to top
+                @rost.platform
               </a>
             </div>
+          </address>
+
+          {/* Copyright bottom line — the single occurrence of the company
+              name on the sheet, with Back to top pinned to the end edge. */}
+          <div className="mt-4 flex items-baseline justify-between gap-x-6 gap-y-2 text-[11px] text-rost-gray">
+            <span>© 2026 ROST PLATFORM LTD</span>
+            <a
+              href="#platform"
+              className="text-[10px] uppercase tracking-[0.28em] underline-offset-4 transition-colors hover:text-rost-white hover:underline focus-visible:outline-none focus-visible:text-rost-white focus-visible:underline"
+            >
+              Back to top
+            </a>
           </div>
         </div>
       </footer>
