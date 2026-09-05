@@ -749,7 +749,7 @@ function NetworkMap({
       }}
     >
       <Image
-        src="/network/world-map.png"
+        src={asset("/network/world-map.png")}
         alt=""
         width={1104}
         height={640}
@@ -1485,6 +1485,13 @@ function BlueprintBackdrop({
 
 /* ----------------------------- brand mark ---------------------------------- */
 
+/* GitHub Pages serves the site under /rost-platform-website, so public/ asset
+   URLs must carry the basePath. next/image does not prepend it for
+   unoptimized static-export images, so every public/ src goes through this
+   helper; without NEXT_BASE_PATH it is the identity function. */
+const BP = process.env.NEXT_BASE_PATH ?? "";
+const asset = (path: string) => (BP ? `${BP}${path}` : path);
+
 function BrandMark() {
   return (
     <a
@@ -1493,9 +1500,7 @@ function BrandMark() {
       aria-label="ROST PLATFORM — home"
     >
       <Image
-        src={process.env.NEXT_BASE_PATH
-          ? "/rost-platform-website/rost-platform-logo-white.png"
-          : "/rost-platform-logo-white.png"}
+        src={asset("/rost-platform-logo-white.png")}
         alt="ROST PLATFORM — Your Vision Would Grow"
         width={1426}
         height={205}
@@ -1912,7 +1917,7 @@ export default function Home() {
             <h3 className="text-rost-white">
               <span className="sr-only">{t.plateNameA}</span>
               <Image
-                src="/departments/rost-lighting-white-no-tagline.png"
+                src={asset("/departments/rost-lighting-white-no-tagline.png")}
                 alt=""
                 aria-hidden
                 width={3854}
@@ -1964,7 +1969,7 @@ export default function Home() {
               <motion.figure {...reveal(reduce, 0, 0)} className="md:relative md:col-span-7">
                 <div className="aspect-[3/2] w-full overflow-hidden border border-rost-line-strong/40">
                   <Image
-                    src="/departments/armitaj-interior.jpg"
+                    src={asset("/departments/armitaj-interior.jpg")}
                     alt={t.captionA}
                     width={2400}
                     height={1510}
@@ -2003,7 +2008,7 @@ export default function Home() {
             <h3 className="text-rost-white">
               <span className="sr-only">{t.plateNameB}</span>
               <Image
-                src="/departments/rost-trip-white-no-tagline.png"
+                src={asset("/departments/rost-trip-white-no-tagline.png")}
                 alt=""
                 aria-hidden
                 width={2340}
@@ -2044,7 +2049,7 @@ export default function Home() {
               <motion.figure {...reveal(reduce, 0, 0)} className="md:relative md:col-start-6 md:col-span-7">
                 <div className="aspect-[3/2] w-full overflow-hidden border border-rost-line-strong/40">
                   <Image
-                    src="/departments/kyoto-study.jpg"
+                    src={asset("/departments/kyoto-study.jpg")}
                     alt={t.captionB}
                     width={2400}
                     height={1350}
