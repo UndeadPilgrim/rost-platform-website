@@ -1504,7 +1504,8 @@ function BrandMark() {
         alt="ROST PLATFORM — Your Vision Would Grow"
         width={1426}
         height={205}
-        priority
+        /* no `priority`: Next's client-side image preloads skip basePath on
+           GitHub Pages and 404; the mark is small and renders immediately. */
         className="h-7 w-auto object-contain md:h-8"
       />
     </a>
